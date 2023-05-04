@@ -1,0 +1,1025 @@
+
+			@media screen and (min-width: 0px){
+
+
+				*{	
+					list-style-type: none;
+					margin: 0;
+					padding: 0;
+					text-decoration: none;
+				}
+
+
+				html{
+					color: white;
+					font-family: arial, helvetica, sans-serif;
+					font-size: 10px;
+					height: 100%;
+				}
+
+				body{
+					background-color: white;
+				}
+
+
+
+				.main_header{
+					background-color: rgb(0, 0, 10);
+					position: sticky;
+					top: 0;
+					z-index: 2;
+				}
+
+
+				.body_overlay{
+					display: block;
+					bottom: 0; top: 0; left: 0; right: 0;
+					position: absolute;
+					z-index: 2;
+					width: 100%;
+					opacity: 0;
+					display: none;
+					background-color: black;
+				}
+
+
+				.worker{
+					line-height: 1.3;
+					width: 90%;
+					font-size: 1.3rem;
+					margin: auto;
+					border: 1px solid rgb(100, 100, 100);
+					padding: 15px 10px;
+					box-sizing: border-box;
+					margin-top: 10px;
+					border-radius: 6px;
+					color: rgb(200, 200, 200);
+				}
+
+
+				.worker a{
+					color: rgb(30, 220, 130);
+				}
+
+				.worker span{
+					color: white;
+					font-size: 1.5rem;
+					font-weight: 600;
+				}
+
+
+
+
+	.menu{
+		overflow: hidden;
+		background-color: rgb(250 250 250);
+		height: 300px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 4;
+	}
+
+
+	.open_menu{	
+		overflow: scroll;
+		animation-name: open_menu;
+		animation-duration: 200ms;
+		animation-timing-function: ease-in;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes open_menu{
+
+		0%{
+			opacity: 0%;
+			width: 0%
+		}
+		100%{
+			opacity: 100%;
+			width: 70%
+
+		}
+	}
+
+
+
+
+
+	.close_menu{
+		animation-name: close_menu;
+		animation-duration: 200ms;
+		animation-timing-function: ease-in;
+		animation-fill-mode: forwards;
+	}
+
+	@keyframes close_menu{
+		0%{
+			opacity: 100%;
+			width: 70%;
+			
+		}
+		100%{
+			
+			
+			width: 0%;
+			opacity: 0%;
+		}
+	}
+
+
+
+
+	.menu nav{
+		margin: 20px 0 0 0;
+	}
+
+
+
+	.menu a{
+		display: inline-block;
+		width: 100%;
+		color: rgb(30 30 30);
+		font-size: 1.1rem;
+		font-family: arial;
+		padding: 15px 0 15px 10px;
+		font-weight: 600;
+		border-bottom: 1px solid rgb(220 220 220);
+	}
+
+	
+
+
+	.menu .fas, .menu .fab, .menu .far{
+		font-size: 1.5rem;
+		display: inline-block;
+		width: 25px;
+		color: rgb(100 100 100);
+	}
+
+
+
+
+				
+
+
+				.menuIcon_to_login{
+					display: grid;
+					grid-template-columns: 52px 1fr 46%;
+					padding: 12px 0;
+				}
+
+
+
+				.menu_icon{
+					border-radius: 4px;
+					margin: 22px 0 0 10px;
+					width: 19px;
+					padding: 10px 10px 16px 10px;
+					height: 15px;
+				}
+				
+
+				.menu_icon span{
+					display: block;
+					background-color: rgb(20, 230, 120);
+					height: 1px;
+					width: 100%;
+					border-radius: 10px;
+					margin: auto;
+				}
+
+				.menu_icon span+span{
+					margin-top: 6px;
+				}
+				
+
+
+
+				.siteLogo{
+					color: white;
+					font-size: 1.3rem;
+					display: block;
+					margin-left: -3px;
+					margin-top: 32px;
+				}
+
+
+
+
+
+
+				.account_wrapper{
+					display: block;
+					width: auto;
+					height: 30px;
+					margin: 31px 20px 0 auto;
+				}
+
+
+				.account_wrapper > i{
+					display: inline-block;
+					padding-right: 2px;
+					color: white;
+					font-size: 1.5rem;
+				}
+
+
+				.account_wrapper > span{
+					color: rgb(20, 230, 120);
+					font-size: 0.9rem;
+				}
+
+
+
+
+
+				.wrapper_wrapper{
+					border-top: 1px solid rgb(60, 60, 60);
+                    border-bottom: 1px solid rgb(60, 60, 60);
+					border-radius: 10px;
+					margin-top: 10px;
+				}
+				
+				.image_wrapper{
+					display: grid;
+					grid-template-columns: 20% 35% 45%;
+					width: 85%;
+					margin: auto;
+					padding: 10px 0;
+				}
+
+				.image_wrapper img{
+					width: 50%;
+					display: block;
+					margin: auto;
+				}
+
+
+				.image_wrapper img + img{
+					margin-left: 45%;
+
+				}
+
+
+
+
+				.wallet_wrapper{
+					padding: 20px 0 20px 10px;
+					box-sizing: border-box;
+					font-size: 0.7rem;
+					font-weight: 400;
+					color: rgb(245, 245, 245);
+					background-color: rgb(0, 25, 50);
+				}
+
+
+				.number_and_network_form{
+					margin: 60px auto 0 auto;
+					height: 22px;
+					width: 95%;
+				}
+
+				.number_and_network_form input{
+					border: 1px solid black;
+					border-radius: 10px;
+					display: block;
+					color: black;
+					background-color: white;
+					margin: 0 auto;
+					width: 80%;
+				}
+
+				
+
+
+				.courage{
+					width: 95%;
+					font-size: 1.1rem;
+					margin: 20px auto 0 auto;
+					color: rgb(100, 100, 100);
+					text-align: center;
+					box-sizing: content-box;
+				}
+
+
+
+
+				div.bundle_wrapper {
+					margin-top: 25px;
+					box-sizing: border-box;
+					background-color: rgb(230, 230, 230);
+					padding: 20px 2.5%;
+					display: grid;
+					grid-template-columns: 1fr 1fr 1fr;
+					grid-gap: 20px 15px;
+					border-radius: 10px;
+				}
+
+
+				
+
+
+
+
+
+				div.bundle_wrapper > div{
+					color: black;
+					font-size: 1rem;
+					padding: 0 0 10px 0;
+					background-color: white;
+					text-align: center;
+					border-radius: 15px;
+				}
+
+
+
+				div.bundle_wrapper .no_bonus{
+					background-color: rgb(45, 30, 70);
+				}
+
+
+
+			
+				
+				.bundle_wrapper em{
+					font-size: 1rem;
+					text-align: center;
+					border-radius: 15px 15px 0 0;
+					background-color: rgb(240, 70, 70);
+					
+					padding: 4px 6px;
+					margin-bottom: 20px;
+					display: block;
+					margin-left: auto;
+					color: white;
+				}
+
+
+				
+				
+               
+
+
+				div.bundle_wrapper > div  span{
+					
+					font-size: 1.2rem;
+					font-weight: 600;
+					line-height: 2;
+				}
+
+				div.bundle_wrapper > div > div > span + span{
+					text-align: right;
+				}
+
+
+
+				
+				h1{
+				    width: 93%;
+					text-align: center;
+					margin: auto;
+					margin-top: 60px;
+					padding-top: 10px;
+					border-top: 1px solid rgb(130, 130, 130);
+					border-radius: 20px;
+					font-size: 2rem;
+					position: relative;
+					z-index: 1;
+				}
+
+
+
+
+				
+
+				
+
+
+				.paymentForm{
+					width: 90%;
+					margin: auto;
+					margin-top: 20px;
+				}
+
+
+				label{
+					width: 95%;
+					display: block;
+					margin: 30px auto 5px auto;
+					font-size: 1.3rem;
+					color: rgb(220, 220, 230);
+				}
+
+
+
+
+				input, select{
+					width: 95%;
+					padding-left: 20px;
+					box-sizing: border-box;
+					height: 20px;
+					display: block;
+					margin: auto;
+					font-size: 1.1rem;
+					position: relative;
+					z-index: 1;
+				}
+
+
+				.card_error{
+					font-size: 1.1rem;
+					color: red;
+					width: 95%;
+					margin: auto;
+					margin-top: 5px;
+				}
+
+
+				.instruction_p{
+					width: 95%;
+					font-style: italic;
+					margin: 5px auto 0 auto;
+					font-size: 1rem;
+					color: rgb(20, 200, 120);
+				}
+
+
+
+
+				button{
+					width: 95%;
+					display: block;
+					margin: auto;
+					margin-top: 30px;
+					background-color: rgb(10, 150, 50);
+					font-size: 1.1rem;
+					height: 30px;
+					border: none;
+					color: white;
+				}
+
+
+
+
+				.fund_button_wrapper{
+					background-color: rgb(225, 235, 235);
+					padding: 10px 0 20px 0;
+					border-radius: 0 0 15px 15px;
+				}
+
+				
+
+				.fund_button{
+					padding: 15px 0;
+					font-size: 1.2rem;
+					margin-top: 0;
+					border: 1px solid rgb(100, 100, 100);
+					background-color: rgb(250, 250, 250);
+					color: rgb(130, 130, 130);
+					height: auto;
+					width: 80%;
+					margin-left: 10%;
+					border-radius: 20px;
+				}
+
+
+				.fund_button_wrapper span{
+					font-size: 2rem;
+					color: green;
+					font-weight: 600;
+				}
+
+
+
+
+
+				
+
+				.warning_p{
+					width: 95%;
+					margin: auto;
+					margin-top: 5px;
+					font-size: 1.1rem;
+					color: rgb(200, 50, 10);
+				}
+
+
+
+				.term_apply{
+					color: rgb(120, 120, 120);
+					width: 95%;
+					margin: 30px auto 0 auto;
+					text-align: center;
+					font-size: 1.2rem;
+					
+				}
+
+				.term_home{
+					display: grid;
+					grid-template-columns: 1fr 1fr;
+					margin-top: 20px;
+				}
+
+
+
+				.term_home > *{
+					display: block;
+					font-size: 1rem;
+					text-align: center;
+					width: 60%;
+					padding: 10px;
+					border: 1px solid rgb(200, 200, 200);
+					border-radius: 5px;
+					margin-left: 15%;
+				}
+
+
+
+
+
+				
+				
+
+
+
+
+
+
+
+
+
+
+				.fa-spinner{
+					font-size: 10rem;
+					color: rgb(200, 200, 200);
+					display: block;
+					text-align: center;
+					animation-name: routate_loader;
+					animation-duration: 1400ms;
+					animation-timing-function: linear;
+					animation-iteration-count: infinite;
+				}
+
+
+				@keyframes routate_loader{
+
+					0%{
+						transform: rotateZ(0deg);
+					}
+
+					100%{
+						transform: rotateZ(360deg);
+					}
+				}
+
+
+				.wait{
+					text-align: center;
+					font-size: 1.8rem;
+					color: white;
+				}
+
+				.take_second{
+					text-align: center;
+					font-size: 1.4rem;
+					color: rgb(220, 220, 200);
+				}
+			}
+
+
+
+
+
+
+
+
+
+@media screen and (min-height: 400px){
+	.fa-spinner{
+		margin-top: 50px;
+	}
+}
+
+
+
+
+
+@media screen and (min-height: 500px){
+	.fa-spinner{
+		margin-top: 100px;
+	}
+}
+
+
+
+@media screen and (min-height: 600px){
+	.fa-spinner{
+		margin-top: 150px;
+	}
+}
+
+
+
+
+@media screen and (min-height: 700px){
+	.fa-spinner{
+		margin-top: 200px;
+	}
+}
+
+
+
+
+@media screen and (min-height: 800px){
+	.fa-spinner{
+		margin-top: 250px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 250px){
+
+
+
+	html{
+		font-size: 11px;
+	}
+
+
+	.account_wrapper{
+		margin: 30px 20px 0 auto;
+	}
+
+
+
+	div.bundle_wrapper > p > span{
+		width: 57px;
+		right: 3px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+			
+@media screen and (min-width: 300px){
+
+
+	html{
+		font-size: 12px;
+	}
+
+
+
+	.login_wrapper a{
+		width: 57px;
+	}
+
+
+	.menu_icon{
+		width: 23px;
+		margin-top: 18.5px;
+	}
+
+	.menu_icon span{
+		height: 2px;
+	}
+
+	.menu_icon span+span{
+		margin-top: 6px;
+	}
+
+
+
+	.siteLogo{
+		margin-left: 4px;
+		margin-top: 30px;
+	}
+
+
+
+	.account_wrapper{
+		margin: 29px 20px 0 auto;
+	}
+
+
+
+
+	.wrapper_wrapper{
+		margin-top: 20px;
+	}
+
+
+
+
+
+	p.purchase_p{
+		font-size: 1.1rem;
+	}
+
+
+
+
+	div.bundle_wrapper{
+		margin-top: 70px;
+	}
+
+	.price_h2{
+		font-size: 1.6rem;
+	}
+
+
+	div.bundle_wrapper > p{
+		font-size: 1.1rem;
+	}
+	
+	
+
+
+	div.bundle_wrapper > p > span{
+		width: 65px;
+		right: 5px;
+	}
+
+
+	h1{
+		font-size: 2.3rem;
+		margin-top: 90px;
+	}
+
+
+
+
+	input{
+		font-size: 1.2rem;
+	}
+
+	input, select, button{
+		height: 25px;
+	}
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 350px){
+
+
+	html{
+		font-size: 11.5px;
+	}
+
+
+
+
+	.menu_icon{	
+		width: 27px;
+		padding: 10px;
+		height: 25px;
+	}
+
+	.menu_icon span{
+		height: 3px;
+	}
+
+	.menu_icon span+span{
+		margin-top: 6px;
+	}
+
+
+
+
+	.siteLogo{
+		font-size: 1.6rem;
+		margin-left: 6px;
+		margin-top: 29px;
+	}
+
+
+
+	.wrapper_wrapper{
+		margin-top: 30px;
+	}
+
+
+	p.purchase_p{
+		font-size: 1.2rem;
+	}
+
+
+
+
+	div.bundle_wrapper{
+		margin-top: 10px;
+	}
+
+	.price_h2{
+		font-size: 1.7rem;
+	}
+
+
+	div.bundle_wrapper > p{
+		font-size: 1.2rem;
+	}
+	
+	
+
+
+	div.bundle_wrapper > p > span{
+		width: 80px;
+	}
+
+
+	h1{
+		font-size: 2.8rem;
+		margin-top: 80px;
+	}
+
+
+
+
+	input{
+		font-size: 1.4rem;
+	}
+
+
+	input, select, button{
+		height: 40px;
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 360px){
+
+
+	html{
+		font-size: 12px;
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 380px){
+
+	html{
+		font-size: 12.5px;
+	}
+
+}
+
+
+
+
+
+
+
+
+@media screen and (min-width: 500px){
+
+	.menu_icon{
+		margin-left: 20px;
+	}
+
+
+	.siteLogo{
+		margin-left: 18px;
+	}
+
+
+	.not_header{
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+
+
+	input{
+		font-size: 1.5rem;
+	}
+
+
+	input, select, button{
+		height: 45px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (min-width: 700px){
+	.not_header{
+		max-width: 700px;
+		margin: 0 auto;
+	}
+
+
+
+	.main_header{
+		padding-right: 2%;
+		padding-left: 2%;
+		box-sizing: border-box;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
