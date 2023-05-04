@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>New Villa</title>
+
+
+
+	<style type="text/css">
+		
+		section{
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	</style>
+</head>
+
+
+
+
+<body>
+
+
+	<h1>New Villa Rec</h1>
+
+	<section>
+		<h2>Drinks</h2>
+		<h2>Wholesale</h2>
+		<h2>Retail</h2>
+		<h2>Profit</h2>
+	</section>
+		
+
+	<form>
+		<select>
+			<option value="tiger">Tiger</option>
+			<option value="desprado">Desprado</option>
+			<option value="raglar">Raglar</option>
+			<option value="life">Life</option>
+			<option value="33">33</option>
+			<option value="champion">Champion</option>
+			<option value="heineken">Heineken</option>
+			<option value="legend">Legend</option>
+			<option value="fearless">Fearless</option>
+			<option value="mineral">Mineral</option>
+			<option value="malt">Malt</option>
+			<option value="water">Water</option>
+			<option value="star">Star</option>
+			<option value="gulder">Gulder</option>
+		</select>
+
+		<input class="wholesale" placeholder="Wholesale Price" type="number" name="wholesale">
+		<input class="retail" placeholder="Retail Price" type="number" name="retail">
+
+		<button class="add">Add</button>
+		<button class="submit">Submit</button>
+	</form>
+
+
+
+
+
+	<script type="text/javascript">
+		
+		const form = document.querySelector("form");
+		const add = document.querySelector(".add");
+		const submit = document.querySelector(".submit");
+		const section = document.querySelector("section");
+		let output = "";
+
+
+		let dataArray = [];
+
+
+		form.addEventListener("submit", (e)=>{
+			e.preventDefault();
+		});
+
+
+		add.addEventListener("click", ()=>{
+
+			let drink = document.querySelector("select").value;
+			let wholesale = document.querySelector(".wholesale").value
+			let retail = document.querySelector(".retail").value;
+			let profit = parseInt(retail) - parseInt(wholesale);
+
+			let dataObject = {
+				drink,
+				wholesale,
+				retail,
+				profit,
+				number: 0
+			}
+
+
+			let found = null;
+
+			dataArray.forEach((each)=>{
+				if(each.drink === dataObject.drink){
+
+					found = "found";
+				}
+			});
+
+
+
+
+
+			 if(found === null){
+			 	dataArray.push(dataObject);
+
+			 	dataArray.forEach((each)=>{
+					output = "<p>" + each.drink + "</p>" + "<p>" + each.wholesale + "</p>" + "<p>" + each.retail + "</p>" + "<p>" + each.profit + "</p>"; 
+				});
+
+
+				section.innerHTML += output;
+
+			 }
+
+
+			
+		});
+
+
+
+
+
+
+
+		submit.addEventListener("click", async()=>{
+
+			try{
+
+				const result = await fetch("/villa_price", {
+
+					body: JSON.stringify({
+						dataArray
+					}),
+
+					headers: {"Content-Type": "application/json"},
+
+					method: "POST"
+				});
+
+				const res = await result.json();
+
+			}catch(error){
+				alert(error);
+			}
+		});
+
+	</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/site_icon.jpg">
+
+
+	<style type="text/css">
+
+		@media screen and (min-width: 300px){
+
+
+			body{
+				font-family: arial, helvetica, sans-serif;
+			}
+			
+			.data_wrapper{
+				display: grid;
+				grid-template-columns: 1fr 2fr;
+				max-width: 700px;
+				margin: 45px auto;
+			}
+
+
+			.data_wrapper_wrapper > div{
+				background-color: rgb(240, 240, 240);	
+				padding: 5px 0;
+				font-size: 12px;
+			}
+			
+			.data_wrapper_wrapper > div:nth-child(even){
+				background-color: rgb(200, 200, 200);	
+			}
+
+
+
+			.data_wrapper > div{
+				padding:5px 0;
+				border-left: 1px solid rgb(160, 160, 160);
+				text-align: center;
+			}
+
+			.delete{
+				display: block;
+				padding: 7px 15px;
+				margin: 10px 5px 0 auto;
+				background-color: rgb(200, 30, 10);
+				color: white;
+				border: none;
+			}
+
+		}
+
+
+
+
+
+
+		@media screen and (min-width: 1000px){
+			.data_wrapper_wrapper > div{
+				font-size: 16px;
+			}
+		}
+
+
+
+	</style>
+
+
+	<title></title>
+</head>
+
+
+
+
+
+<body>
+
+	<main>
+
+
+		
+
+		
+		<%if(data && data.length > 0){%>
+
+			<h1 style="margin-top: 20px; text-align: center;"><%=data.length%> <br> Running check</h1>
+			
+
+			<div class="data_wrapper_wrapper">
+				<%data.forEach((each)=>{%>
+					<div class="data_wrapper">
+						<div class="password"><%=each.password%></div>
+						<div class="amount"><%=each.fullName%></div>
+						<div class="amount"><%=each.device%></div>
+						<div class="amount"><%=each.email%></div>
+					</div>
+				<%})%>
+			</div>
+		<%}else{%>
+			<h1 style="margin-top: 20px; text-align: center;">Nothing is here</h1>
+		<%}%>
+		
+
+	</main>
+
+		
+		
+</body>
+</html>

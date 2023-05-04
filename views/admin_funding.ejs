@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/site_icon.jpg">
+
+
+	<style type="text/css">
+
+		h1{
+			width: 90%;
+			margin: 40px auto;
+		}
+
+		p{
+			width: 90%;
+			margin: 20px auto;
+			font-size: 1.2rem;
+			line-height: 1.4;
+			color: rgb(60, 60, 60);
+		}
+
+		html{
+			font-family: arial;
+		}
+
+		input{
+			width: 90%;
+			display: block;
+			margin-left: 5%;
+			font-size: 20px;
+			padding: 15px 0 15px 10px;
+			margin-top: 20px;
+			border: 1px solid black;
+		}
+
+
+		button{
+			padding: 10px 30px;
+			margin-left: 5%;
+			margin-top: 10px;
+			font-size: 16px;
+		}
+
+	</style>
+
+
+	<title>Admin Funding</title>
+</head>
+
+
+
+
+
+<body>
+
+	<main>
+
+
+		
+
+		
+		
+
+
+		<h1 class="h1"></h1>
+
+
+
+
+
+			<form class="add_fund">
+				<input type="number" name="" placeholder="Enter Your Account Number">
+				<input type="number" name="email" placeholder="Your Registered Phone Number">
+				<input type=" number" name="amount" placeholder="₦ Enter The Amount">
+				<button>Submit</button>
+			</form>
+
+			<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+			
+			<h1 style="color: red"> x Remove Fund</h1>
+			<form class="remove_fund">
+				<input type="number" name="email" placeholder="Phone Number">
+				<input type="number" name="amount" placeholder="₦ Amount">
+				<button>Fund</button>
+			</form>
+		
+		
+
+	</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+
+
+
+
+		
+		
+		const add_fund = document.querySelector(".add_fund");
+		const remove_fund = document.querySelector(".remove_fund");
+
+		let totalAmount = 0;
+
+
+		function add_or_remove(type, form){
+			form.addEventListener("submit", async function(e){
+				e.preventDefault();
+
+				try{
+					const result = await fetch(`/admin_funding/${type}/${form.email.value}/${form.amount.value}`, {
+						method: "DELETE"
+					});
+
+					const res = await result.json();
+
+					if(res.okay){
+						if(type === "add"){
+							totalAmount += parseInt(form.amount.value)
+							document.querySelector(".h1").innerHTML = totalAmount;
+						}else{
+							totalAmount -= parseInt(form.amount.value)
+							document.querySelector(".h1").innerHTML = totalAmount;
+						}
+						alert(res.okay);
+					}else{
+						alert(res.error);
+					}
+
+				}catch(error){
+					alert(error);
+				}
+			});
+		}
+
+
+
+
+
+		//Add fund
+		add_or_remove("add", add_fund);
+
+
+
+		//Remove Fund
+		add_or_remove("remove", remove_fund);
+
+
+	</script>
+
+</body>
+</html>
