@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome/css/all.css">
+	<link rel="stylesheet" type="text/css" href="/css/purchase.css">
+
+
+	<title></title>
+
+	<style type="text/css">
+
+		html{
+			color: black;
+			font-family: arial;
+		}
+
+		body{
+			background-color: rgb(235, 235, 235);
+		}
+
+
+		.wallet_wrapper{
+			padding: 20px 0 20px 10px;
+			box-sizing: border-box;
+			font-size: 0.7rem;
+			font-weight: 400;
+			color: rgb(245, 245, 245);
+			background-color: rgb(0, 25, 50);
+		}
+		
+		.option_wrapper{
+			width: 90%;
+			margin-left: 5%;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 15px;
+			margin-top: 50px;
+		}
+
+		.option_wrapper > div{
+			background-color: white;
+			padding: 20px 10px;
+			border-radius: 15px;
+		}
+
+		i{
+			font-size: 2rem;
+			margin-bottom: 10px;
+			color: rgb(50, 130, 200);
+			background-color: rgb(200, 230, 255);
+			padding: 10px;
+			border-radius: 50%;
+		}
+
+		i.second{
+			color: rgb(255, 175, 50);
+			background-color: rgb(255, 245, 200);
+		}
+
+
+		i.third{
+			color: rgb(55, 220, 140);
+			background-color: rgb(220, 255, 220);
+		}
+
+		.option_wrapper h4{
+			font-size: 1.3rem;
+			line-height: 1.3;
+		}
+
+		.option_wrapper p{
+			margin-top: 10px;
+			line-height: 1.3;
+			font-size: 1.1rem;
+			color: rgb(100, 100, 100);
+		}
+	</style>
+</head>
+
+
+
+
+
+
+
+
+
+
+<body>
+
+
+
+
+
+	<section class="wallet_wrapper">
+		<h2>Wallet Balance: ₦<%=wallet%></h2>
+		<h2>Referral Reward: ₦<%=reward%></h2>
+	</section>
+
+
+	<div class="option_wrapper">
+
+		<div class="with_recharge" onclick="window.location.href='/data_price'">
+			<i class="far fa-newspaper"></i>
+			<h4>Purchase for Personal Use</h4>
+			<p>This data will be sent to your SIM for browsing</p>
+		</div>
+
+		<div class="with_bank" onclick="window.location.href='/partner' ">
+			<i class=" second fas fa-university"></i>
+			<h4>Purchase for Resell</h4>
+			<p>This Data will be added to your data wallet for reselling.</p>
+		</div>
+
+
+		<br><br>
+		
+	</div>
+
+
+
+
+
+</body>
+</html>

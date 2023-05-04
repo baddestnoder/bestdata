@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="I found this website that sales data very cheap, I think you will be interested... They give 11GB bonus to new users and if you invite someone to the website, you get 150 Naira for each person...">
+
+	<link rel="icon" href="/site_icon.jpg">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="/css/purchase.css">
+
+
+
+
+
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome/css/all.css">
+
+
+
+	<style type="text/css">
+
+		*{
+			padding: 0;
+			margin: 0;
+		}
+
+		body{
+			background-color: white;
+		}
+
+
+
+		.user_wrapper{
+			color: black;
+			width: 90%;
+			margin: 20px auto 5px auto;
+			display: grid;
+			grid-template-columns: 50px 1fr;
+		}
+
+		.user_wrapper i{
+			font-size: 40px;
+		}
+
+
+		.user_wrapper p{
+			font-size: 13px;
+			font-weight: 600;
+			margin-top: 14px;
+		}
+
+		.wallet_wrapper{
+			background-color: rgb(40, 140, 95);
+			padding: 20px 25px;
+			box-sizing: border-box;
+			font-size: 0.8rem;
+			font-weight: 400;
+			color: rgb(250, 250, 250);
+			width: 90%;
+			margin: 20px auto 0 auto;
+			border-radius: 10px;
+		}
+
+
+		.fund_wallet_wrapper{
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			text-align: center;
+			margin-top: 30px;
+		}
+
+
+		.fund_wallet_wrapper i{
+			font-size: 2rem;
+			color: white;
+		}
+
+
+		.fund_wallet_wrapper h2{
+			font-weight: 400;
+			margin-top: 8px;
+			font-size: 0.9rem;
+			color: rgb(230, 230, 230);
+
+		}
+
+
+		
+		
+		.option_section{
+			margin: 40px auto 0 auto;
+			box-sizing: border-box;
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-gap: 15px 0px;
+			text-align: center;
+			background-color: rgb(240, 240, 240);
+			border-radius: 20px;
+			padding: 20px 0;
+		}
+
+
+		.option_section article{
+			background-color: white;
+			padding: 15px 0px;
+			border-radius: 10px;
+			background-color: rgb(230, 230, 230);
+			width: 90%;
+			margin-left: 5%;
+			box-sizing: border-box;
+		}
+
+		.option_section > article > i{
+			width: 40px;
+			height: 35px;
+			padding: 20px 15px 15px 15px;
+			border-radius: 10px;
+			background-color: white;
+			border: 1px solid darkgreen;
+		}
+
+		
+		.option_section > article > h2{
+			color: red;
+			font-size: 1rem;
+			font-weight: 400;
+			font-family: arial;
+			margin-top: 8px;
+		}
+
+		i{
+			color: rgb(40, 40, 40);
+			font-size: 2.3rem;
+			text-align: center;
+		}
+
+
+
+		.term_home{
+			margin-top: 40px;
+			color: rgb(100, 100, 100);
+		}
+
+
+		.loader_wrapper{
+			width: 90%;
+			margin: 100px 0 0 5%;
+		}
+		.loader_wrapper .fas{
+			font-size: 7rem;
+			animation-name: color_change;
+			animation-duration: 3000ms;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			text-align: center;
+		}
+
+
+
+				@keyframes color_change{
+
+					0%{
+						color: white;
+					}
+
+					25%{
+						color: lime;
+					}
+
+
+					50%{
+						color: red;
+					}
+
+
+					75%{
+						color: white;
+					}
+
+
+
+					100%{
+						color: white;
+					}
+				}
+
+
+
+
+
+
+	</style>
+
+
+	<title>Start</title>
+</head>
+
+
+
+
+<body data-link="<%=contactInfo.link%>" data-user="<%=isUser%>" data-purchase="<%=purchase%>" data-reward="<%=reward%>">
+
+
+	<div class="user_wrapper">
+		<i class="fas fa-user-circle"></i>
+		<p>Hello, <%=data.fullName%> </p>
+	</div>
+
+	<section class="wallet_wrapper">
+		<h2>Wallet Balance: ₦<%=data.wallet%></h2>
+		<h2>Referral Reward: ₦<%=data.reward%></h2>
+
+		<div class="fund_wallet_wrapper">
+			<article onclick="window.location.href='/fund_method'">
+				<i class="fas fa-university"></i>
+				<h2>Add Money</h2>
+			</article>
+
+			<article onclick="window.location.href='/withdraw'">
+				<i class="fas fa-location-arrow"></i>
+				<h2>Withdraw</h2>
+			</article>
+
+
+			<article onclick="window.location.href='/referral'">
+				<i class="fas fa-wallet"></i>
+				<h2>My Wallet</h2>
+			</article>
+
+		</div>
+
+	</section>
+
+
+	
+	<section class="option_section" style="display: none;">
+
+		
+
+
+		<article class="buy_data" onclick="window.location.href='/data_type'">
+			<i class="fas fa-wifi"></i>
+			<h2>Buy Data</h2>
+		</article>
+
+
+		<article onclick="window.location.href='/referral#referral_section'">
+			<i class="fas fa-hand-holding-usd"></i>
+			<h2>Refer & Earn</h2>
+		</article>
+
+
+		<article onclick="window.location.href='/recharge_price'">
+			<i class="fas fa-phone-volume"></i>
+			<h2>Buy Airtime</h2>
+		</article>	
+
+
+
+		<article onclick="window.location.href='/partner'">
+			<i class="fas fa-cart-arrow-down"></i>
+			<h2>Resell Data</h2>
+		</article>
+
+		<article onclick="window.location.href='<%=contactInfo.link%>' ">
+			<i class="fab fa-whatsapp"></i>
+			<h2>Customer Care</h2>
+		</article>
+
+
+
+		<article class="airtime_to_cash">
+			<i class="fas fa-recycle"></i>
+			<h2>Sell Your Airtime</h2>
+		</article>
+		
+		
+
+	</section>
+
+
+
+<br><br>
+
+
+	<div class="term_home">
+		<a href="<%=contactInfo.link%>">Contact</a>
+		<a href="/term">Terms of Service</a>
+	</div>
+
+		
+
+		
+
+
+
+		<div style="display: none; text-align: center;" class="loader_wrapper">
+			<i class="fas fa-wifi"></i>
+			<br><br>
+			<p class="wait">Please wait...</p>
+			<p class="take_second"></p>
+		</div>
+
+		<div class="body_overlay"></div>
+
+
+
+
+
+
+
+
+
+		<div class="main_wrapper" style="display: none;">
+		
+
+			<div class="not_header">
+
+				<main role="main">
+
+
+				
+
+
+
+
+					
+				</main>
+			</div>
+		</div>
+
+		<br><br><br><br>
+
+
+
+		<script type="text/javascript">
+
+
+
+
+
+			const body = document.querySelector("body");
+			const loader_wrapper = document.querySelector(".loader_wrapper");
+			const main_wrapper = document.querySelector(".main_wrapper");
+
+
+
+
+			const allButton = document.querySelectorAll(".button");
+			const airtime_to_cash = document.querySelector(".airtime_to_cash");
+
+
+
+			airtime_to_cash.addEventListener("click", ()=>{
+				window.location.href = `${body.dataset.link}`;
+			});
+
+			
+			
+
+			/*
+			allButton[1].addEventListener("click", function(){
+				this.parentElement.children[2].innerHTML = "<br> <b>Bank:</b> PalmPay <br><b>Account Name:</b> Alt Data<br> <b>Account No:</b> 9029276551 <br><br><big><b>1.</b></big> Send your preferred amount to the above PalmPay account. <br><br><big><b>2.</b></big> Screenshot your debit alert. <br><br><big><b>3.</b></big> Send the debit screenshot to 08082657127 on WhatsApp, <br><br><big><b>4.</b></big> Send your phone number also and your SIM will be credited within 2 minutes.";
+				this.parentElement.children[2].style.color = "rgb(0, 20, 120)"
+
+				this.style.display = "none"
+			});
+
+
+
+
+
+
+			allButton[2].addEventListener("click", function(){
+				alert('Insufficient fund, please fund your wallet.');
+			});
+
+
+
+			allButton[3].addEventListener("click", function(){
+				if(parseInt(document.querySelector("body").dataset.reward) >= 10000){
+					alert("You can not use your first referral to purchase data.")
+				}else{
+					alert("Oops!!! You can not use your referral reward until it's up to ₦10,000.")
+				}
+			});
+
+	*/
+
+			
+
+
+			
+
+
+			if(body.dataset.purchase === "true"){
+				document.querySelectorAll(".plus_bonus").forEach((each)=>{
+					each.style.display = "none";
+				})
+			}
+
+
+			if(body.dataset.user !=="old user"){
+				loader_wrapper.style.display = "block";
+				main_wrapper.style.display = "none";
+				document.querySelector(".option_section").style.display = "none";
+
+				document.querySelector(".take_second").style.color = "black";
+				setTimeout(()=>{
+					document.querySelector(".take_second").textContent = "Verifying your account..."
+					setTimeout(()=>{
+						document.querySelector(".take_second").innerHTML = "<br>Purchase up to N1,000 of data and receive your 11GB welcome bonus.";
+						setTimeout(()=>{
+							window.location.href = "/purchase";
+						}, 13000);
+						
+					}, 3000)
+				}, 250);
+			}else{
+				loader_wrapper.style.display = "none";
+				main_wrapper.style.display = "block";
+				document.querySelector(".option_section").style.display = "grid";
+			}
+
+
+
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="We sale the cheapest Internet Data in Nigeria.">
+
+		<link rel="icon" href="/site_icon.jpg">
+		<link rel="stylesheet" type="text/css" href="/css/fontawesome/css/all.css">
+
+
+
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="/css/purchase.css">
+
+		<style type="text/css">
+			
+			body{
+				background-color: rgb(0, 25, 50);
+			}
+
+
+			.recharge_form{
+				border-radius: 20px;
+				background-color: rgb(20, 45, 70);
+				padding: 20px 0;
+			}
+
+
+			.wallet_wrapper{
+				background-color: rgb(0, 25, 50);
+				padding: 20px 0 20px 5%;
+				box-sizing: border-box;
+				font-size: 0.8rem;
+				font-weight: 400;
+				color: rgb(250, 250, 250);
+			}
+
+			h1{
+				text-align: left;
+				line-height: 1.3;
+				font-size: 2.2rem;
+				border: none;
+				width: 60%;
+				margin-left: 8%;
+				margin-top: 30px;
+			}
+
+			.courage_p{
+				width: 87%;
+				margin: 20px 0 0 8%;
+				font-size: 1.1rem;
+				line-height: 1.4;
+				color: rgb(200, 200, 200);
+			}
+
+			input, select{
+				background-color: white;
+			}
+
+			button{
+				width: 100px;
+				margin-left: 2.5%;
+			}
+		</style>
+		
+
+
+
+
+		<title>Purchase Data</title>
+	</head>
+
+
+
+	<body data-user="<%=isUser%>" data-purchase="<%=purchase%>" >
+
+
+
+
+
+
+		<div style="display: none;" class="loader_wrapper">
+			<i class="fas fa-spinner"></i>
+			<p class="wait">Please wait...</p>
+			<p class="take_second"></p>
+		</div>
+
+		<div class="body_overlay"></div>
+
+
+
+
+
+
+
+
+
+		<div class="main_wrapper">
+		
+
+			<div class="not_header">
+
+				<main role="main">
+
+
+
+				<section class="wallet_wrapper">
+					<h2>Wallet Balance: ₦<%=data.wallet%></h2>
+					<h2>Referral Reward: ₦<%=data.reward%></h2>
+				</section>
+
+
+					<div id="form" class="recharge_form">
+
+						<h1>Fund Using Recharge Card</h1>
+
+						<p class="courage_p">"We accept only MTN and Airtel recharge card, but the fund can purchase data and airtime for all network including bill payments."</p>
+
+						<form  class="paymentForm" >
+
+							<label>Recharge Card</label>
+							<input required type="number" name="recharge_pin" placeholder="Enter recharge card">
+							<div class="card_error"></div>
+							<p class="instruction_p card_instruction_p">*Get recharge card from a nearby shop.</p>
+
+
+							<label>Netword of Recharge Card </label>
+							<select name="network" required>
+								<option value="" disabled selected >Select Netword</option>
+								<option value="airtel">Airtel</option>
+								<option value="mtn">MTN</option>
+							</select>
+
+
+							<label>Amount</label>
+							<select name="amount" required>
+								<option value="" disabled selected >Select amount</option>
+								<option value="200">₦200</option>
+								<option value="500">₦500</option>
+								<option value="1000">₦1,000</option>
+							</select>
+
+
+
+							<button class="submit_button">Fund</button>
+							
+						</form>
+					</div>
+
+				</main>
+			</div>
+		</div>
+
+
+
+		<script type="text/javascript">
+
+
+			
+
+
+			const body = document.querySelector("body");
+			const loader_wrapper = document.querySelector(".loader_wrapper");
+			const main_wrapper = document.querySelector(".main_wrapper");
+
+
+
+
+
+
+			const form = document.querySelector("form");
+			const submit_button = document.querySelector(".submit_button");
+
+			form.addEventListener("submit", async(e)=>{
+				e.preventDefault();
+
+				submit_button.innerHTML = "Loading...";
+				submit_button.style.backgroundColor = "rgb(220, 220, 220)";
+				submit_button.style.color = "rgb(20, 180, 60)"
+
+
+
+				const hour = new Date().getHours();
+				const minute = new Date().getMinutes();
+
+				document.querySelector(".card_instruction_p").style.display = "block";
+				document.querySelector(".card_error").textContent = "";
+
+				if(form.recharge_pin.value.length != 10 && form.recharge_pin.value.length != 17 && form.recharge_pin.value.length != 16){
+					if(form.network.value == "airtel"){
+						alert("This is not a valid Airtel recharge card.");
+					}else{
+						alert("This is not a valid MTN recharge card.");
+					}
+					
+					submit_button.innerHTML = "Proceed";
+					submit_button.style.backgroundColor = "rgb(10, 150, 50)";
+					submit_button.style.color = "white";
+					document.querySelector(".card_instruction_p").style.display = "none";
+					document.querySelector(".card_error").textContent = "Invalid active pin";
+					
+				}else{
+					try{
+
+						loader_wrapper.style.display = "block"
+				 	 	document.querySelector(".take_second").textContent = "";
+						main_wrapper.style.display = "none";
+
+						const result = await fetch("/purchase", {
+							method: "POST",
+							headers: {"Content-Type": "application/json"},
+							body: JSON.stringify({
+								recharge_pin: form.recharge_pin.value,
+								amount: form.amount.value,
+								purchase_time: `${hour}:${minute}`
+							})
+						});
+
+						const res = await result.json();
+
+						if(res.okay){
+
+				   			loader_wrapper.style.display = "none";
+							main_wrapper.style.display = "block";		
+							window.location.href = `/breakdown/${form.recharge_pin.value}`;
+							
+						}else if(res.cardError){
+						    loader_wrapper.style.display = "none";
+						    main_wrapper.style.display = "block";
+							alert(res.cardError);
+							document.querySelector(".card_instruction_p").style.display = "none";
+							document.querySelector(".card_error").textContent = res.cardError;
+						}else if(res.redirect){
+							window.location.href = res.redirect;
+						}else{
+							alert(res);
+						}
+					}catch(error){
+						alert("Failed to proceed, refresh page and try again.");
+					}
+				}
+			});
+
+
+			
+		</script>
+
+
+	</body>
+</html>

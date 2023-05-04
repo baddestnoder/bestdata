@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>New Villa Calc</title>
+
+
+
+	<style type="text/css">
+
+		html{
+			font-family: arial;
+		}
+		
+		article{
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+		}
+
+
+
+		.form_wrapper{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+
+		section{
+			font-size: 17px;
+		}
+		
+	</style>
+</head>
+
+
+
+
+<body>
+
+
+	<h1>New Villa Calculation</h1>
+
+
+	
+
+	<div class="form_wrapper">
+		<form>
+			<%data.forEach((each)=>{%>
+				<input data-retail="<%=each.retail%>" data-drink="<%=each.drink%>" data-wholesale="<%=each.wholesale%>" data-number="<%=each.number%>" data-profit="<%=each.profit%>" type="number" name="<%=each.drink%>" placeholder="<%=each.drink%>" class="drink">
+			<%});%>
+		</form>
+
+		<div class="displayer"></div>
+	</div>
+
+		
+
+
+	<button>Calc</button>
+
+
+	<br>
+
+	<br>
+
+	<article></article>
+
+
+	<br>
+
+	<br>
+
+
+	<section></section>
+	
+	<br><br>
+
+
+
+
+	<script type="text/javascript">
+		
+		
+		
+		const drink = document.querySelectorAll(".drink");
+		const calc = document.querySelector("button");
+		let article = document.querySelector("article");
+		let output = "";
+
+		let drinkInfo = [];
+
+		let totalInfo = [];
+
+
+		/*for(i=0; i < drink.length; i++){
+
+			drink[i].addEventListener("focus", ()=>{
+				document.querySelector(".displayer").innerHTML = drink[i].dataset.drink;
+			});
+		}
+
+		*/
+
+
+		calc.addEventListener("click", ()=>{
+
+			calc.style.display = "none";
+
+			for(i=0; i < drink.length; i++){
+
+
+				let dataObject = {
+					drink: drink[i].dataset.drink,
+					sale: (parseInt(drink[i].dataset.number) - parseInt(drink[i].value)) *  parseInt(drink[i].dataset.retail),
+
+
+					profit: (parseInt(drink[i].dataset.number) - parseInt(drink[i].value)) *  parseInt(drink[i].dataset.profit),
+
+					cost: (parseInt(drink[i].dataset.number) - parseInt(drink[i].value)) *  parseInt(drink[i].dataset.wholesale),
+
+
+					bottle: parseInt(drink[i].dataset.number) - parseInt(drink[i].value)
+				}
+
+				
+
+
+				drinkInfo.push(dataObject);
+			}
+
+			
+
+
+
+			drinkInfo.forEach((each)=>{
+				output += "<p> Drink: " + each.drink + "</p>" + "<p> Sales: " + each.sale + "</p>" + "<p>Profit: " + each.profit + "</p>" + "<p>Cost: " + each.cost + "</p>" + "<p>Bottle: " + each.bottle + "</p>"; 
+			});
+
+			console.log(drinkInfo)
+
+
+			article.innerHTML += output;
+
+
+
+
+			let dataObject = {
+				totalSale: 0,
+				totalProfit: 0,
+				totalCost: 0,
+				totalBottle: 0
+			}
+
+
+
+
+			drinkInfo.forEach((each)=>{
+				dataObject.totalSale += each.sale;
+				dataObject.totalProfit += each.profit;
+				dataObject.totalCost += each.cost;
+				dataObject.totalBottle += each.bottle;
+			});
+
+
+			document.querySelector("section").innerHTML = "<h2>Total Sale: "+dataObject.totalSale +"</h2>" +"<h2>Total Profit: "+dataObject.totalProfit +"</h2>"+"<h2>Total Cost: "+dataObject.totalCost +"</h2>"+"<h2>Total Bottle: "+dataObject.totalBottle +"</h2>"
+
+
+			
+
+
+		});
+
+		
+
+
+	</script>
+
+
+
+</body>
+</html>

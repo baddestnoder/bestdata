@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="I found this website that sales data very cheap, I think you will be interested... They give 11GB bonus to new users and if you invite someone to the website, you get 150 Naira for each person...">
+	
+
+	<meta property="og:image" content="http://alt-datas.heokuapp.com/home.jpeg">
+	<meta property="og:description" content="Refer and earn cash. We also sell data bundle at the cheapest rate.">
+	<meta property="og:image:height" content="312">
+	<meta property="og:image:width" content="600">
+
+	<link rel="icon" href="/site_icon.jpg">
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome/css/all.css">
+
+	<link rel="stylesheet" type="text/css" href="/css/purchase.css">
+
+
+	<style type="text/css">
+		
+		@media screen and (min-width: 0){
+
+			body{
+				background-color: rgb(235, 235, 235);
+			}
+
+
+			article{
+				border: 1px solid rgb(170, 170, 170);
+				width: 90%;
+				margin-left: 5%;
+				margin-top: 40px;
+				padding: 20px;
+				box-sizing: border-box;
+				background-color: white;
+				border-radius: 20px;
+			}
+
+
+			h1{
+				padding: 0;
+				margin: 0;
+				width: 100%;
+				color: rgb(50, 50, 50);
+				border: none;
+			}
+
+
+			.description{
+				width: 90%;
+				margin: 40px auto 0 auto;
+				font-size: 1.5rem;
+				color: black;
+			}
+
+
+			div.bundle_wrapper{
+				margin-top: 0;
+			}
+		}
+
+
+		.affiliate_statement{
+			width: 90%;
+			margin: 20px auto 0 auto;
+			font-size: 1.5rem;
+			color: black;
+			line-height: 1.5;
+		}
+
+		button{
+			font-size: 1.5rem;
+			width: 90%;
+			margin-left: auto;
+			margin-right: auto;
+			background-color: rgb(0, 110, 60);
+		}
+
+	</style>
+
+
+	<title>Recommended</title>
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+
+	<div class="body_overlay"></div>
+
+
+	<main role="main" class="not_header">
+		<article>
+			<h1>Welcome to Our Official Website</h1>
+			<p class="description">We sell data bundle at the cheapest rate across 9 countries including Nigeria.</p>
+
+			<p class="affiliate_statement">We also offer affiliate marketing program: register with us and use your referral link to invite your friends to use our website... You will be rewarded with ₦350 for each person that registers through your link. You can withdraw the rewards into your bank account or use it to buy airtime and data bundles</p>
+
+			<button data-agent="<%=agent%>" >Get Started</button>
+		</article>
+		
+	</main>
+
+
+	<script type="text/javascript">
+		
+		const button = document.querySelector("button");
+
+		button.addEventListener("click", ()=>{
+			window.location.href = `/register/${button.dataset.agent}`;
+		});
+	</script>
+
+	<br><br>
+
+</body>
+</html>

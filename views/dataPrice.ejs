@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="icon" href="/site_icon.jpg">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="/css/purchase.css">
+
+
+
+
+
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome/css/all.css">
+
+
+
+	<style type="text/css">
+
+		*{
+			
+			padding: 0;
+			margin: 0;
+		}
+
+
+		.user_wrapper{
+			color: black;
+			width: 90%;
+			margin: 20px auto 5px auto;
+			display: grid;
+			grid-template-columns: 50px 1fr;
+		}
+
+		.user_wrapper i{
+			font-size: 40px;
+		}
+
+
+		.user_wrapper p{
+			font-size: 13px;
+			font-weight: 600;
+			margin-top: 14px;
+		}
+
+		.wallet_wrapper{
+			background-color: rgb(40, 140, 95);
+			padding: 20px 25px;
+			box-sizing: border-box;
+			font-size: 0.8rem;
+			font-weight: 400;
+			color: rgb(250, 250, 250);
+			width: 90%;
+			margin: 20px auto 0 auto;
+			border-radius: 10px;
+		}
+
+
+		.fund_wallet_wrapper{
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			text-align: center;
+			margin-top: 30px;
+		}
+
+
+		.fund_wallet_wrapper i{
+			font-size: 30px;
+			color: white;
+		}
+
+
+		.fund_wallet_wrapper h2{
+			font-weight: 400;
+			margin-top: 8px;
+			font-size: 13px;
+			color: 190, 190, 190;
+
+		}
+
+
+
+
+		.loader{
+			width: 25px;
+			height: 25px;
+			border-radius: 50%;
+			border: 8px dotted rgb(100, 100, 100);
+			margin: auto;
+			animation-name: routate;
+			animation-duration: 700ms;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+		}
+
+
+		@keyframes routate{
+			0%{
+				transform: rotate(0deg);
+			}
+
+			100%{
+				transform: rotate(360deg);
+			}
+		}
+
+
+
+
+		
+
+
+
+
+		
+	</style>
+
+
+	<title>Start</title>
+</head>
+
+
+
+
+<body data-user="<%=isUser%>" data-email="<%=email%>" data-purchase="<%=purchase%>" data-reward="<%=reward%>" data-wallet="<%=wallet%>">
+
+
+
+	<div class="user_wrapper">
+		<i class="fas fa-user-circle"></i>
+		<p>Hello, <%=fullName%> </p>
+	</div>
+
+	<section class="wallet_wrapper">
+		<h2 class="wallet_h2">Wallet Balance: ₦<%=wallet%></h2>
+		<h2>Referral Reward: ₦<%=reward%></h2>
+
+		<div class="fund_wallet_wrapper">
+			<article onclick="window.location.href='/fund_method'">
+				<i class="fas fa-university"></i>
+				<h2>Add Money</h2>
+			</article>
+
+			<article onclick="window.location.href='/withdraw'">
+				<i class="fas fa-location-arrow"></i>
+				<h2>Withdraw</h2>
+			</article>
+
+
+			<article onclick="window.location.href='/referral'">
+				<i class="fas fa-wallet"></i>
+				<h2>My Wallet</h2>
+			</article>
+
+		</div>
+
+	</section>		
+
+
+
+	<div style="display: none; text-align: center;" class="loader_wrapper">
+		<i class="fas fa-spinner"></i>
+		<p class="wait">Please wait...</p>
+		<p class="take_second"></p>
+	</div>
+
+	<div class="body_overlay"></div>
+
+
+
+
+
+
+
+
+
+		<div class="main_wrapper">
+		
+
+			<div class="not_header">
+
+				<main role="main">
+
+					<form class="number_and_network_form">
+						<input class="number" type="number" name="number" placeholder="Enter Phone Number">
+					</form>
+					<br><br>
+					<p class="courage">Purchase up to ₦1,000 of data to receive the 11GB bonus. <br>The 11GB bonus is available only for new users.</p>
+
+					<div class="bundle_wrapper">
+
+						
+							<div class="prices price_500">
+									<em class="no_bonus">- no bonus</em>
+									<span>6GB <br> 14 Days</span>
+									<span><br> ₦500</span>
+							</div>
+
+
+
+							<div class="prices price_1000">
+									<em>+11GB bonus</em>
+									<span>15GB <br> 31 Days</span>
+									<span><br> ₦1,000</span>
+							</div>
+
+
+							<div class="prices price_2000">
+									<em>+11GB bonus</em>
+									<span>35GB <br> 90 Days</span>
+									<span><br> ₦2,000</span>
+							</div>	
+						
+					</div>
+
+
+					<section style="display: none;" class="fund_button_wrapper">
+						<button class="fund_button" onclick="window.location='/fund_method' ">Oops!!! insufficient balance<br><span>Fund Wallet</span></button>
+					</section>
+
+					<br><br><br>
+
+					<p class="term_apply">Terms and Condition Apply</p>
+
+					<div class="term_home">
+						<a href="/term">Terms of Service</a>
+						<a href="/purchase">Home</a>
+					</div>
+
+					<br><br><br><br>
+
+				</main>
+			</div>
+		</div>
+
+
+
+		<script type="text/javascript">
+
+			const number = document.querySelector("input");
+			const body = document.querySelector("body");
+
+			const bundle_wrapper = document.querySelectorAll(".prices");
+
+
+
+
+
+			document.querySelector("form").addEventListener("submit", (e)=>{
+				e.preventDefault();
+			});
+
+
+
+
+
+
+
+
+
+			async function purchase(amount, thisElement){
+				document.querySelector(".fund_button_wrapper").style.display = "none";
+
+				if(number.value.trim() ==""){
+					alert("Please enter phone number for the data purchase.")
+				}else if(number.value.trim()[0] !=0){
+					alert('Please let your phone number start with "0", do not add country code.');
+				}else if(number.value.trim().length != 11){
+					alert("The number you entered is not a valid phone number");
+				
+				}else{
+
+					if(parseInt(body.dataset.wallet) >= amount){
+						try{
+
+
+
+							loader.style.display = "block";
+							thisElement.append(loader);
+							const result = await fetch("/send_data...", {
+								method: "POST",
+								headers: {"Content-Type": "application/json"},
+								body: JSON.stringify({
+									email: body.dataset.email,
+									buyer: number.value.trim(),
+									amount: amount
+								})
+							});
+
+							const res = await result.json();
+
+							loader.style.display = "none";
+
+							if(res.wallet || res.wallet  == 0){
+								body.setAttribute("data-wallet", `${res.wallet}`);
+								document.querySelector(".wallet_h2").innerHTML = `Wallet Balance: ₦${res.wallet}`;
+								window.location.href = `/breakdown/${body.dataset.email}/${amount}/${number.value.trim()}`
+							}else if(res.low){
+								body.setAttribute("data-wallet", `${res.amount}`);
+								document.querySelector(".wallet_h2").innerHTML = `Wallet Balance: ₦${res.amount}`
+								alert("Insufficient fund!!! Please fund your wallet.");
+								document.querySelector(".fund_button_wrapper").style.display = "block";
+							}else{
+								console.log(res.error);
+							}
+
+							
+
+						}catch(error){
+							console.log(error);
+						}
+
+					}else if(parseInt(body.dataset.reward) >=10000){
+						alert("Sorry, you can not use your first reward to purchase data, fund wallet and try to withdraw the reward instead.");
+						document.querySelector(".fund_button_wrapper").style.display = "block";
+					}else if(parseInt(body.dataset.reward) > 0 && parseInt(body.dataset.reward) < 10000){
+						alert("Insufficient fund!!! Please fund your wallet to purchase this data or complete your referral, because you can not use your referral reward until its up to ₦10,000");
+						document.querySelector(".fund_button_wrapper").style.display = "block";
+					}else{
+						alert("Insufficient fund!!! Please fund your wallet or invite friends to earn referral reward.");
+						document.querySelector(".fund_button_wrapper").style.display = "block";
+					}
+				}
+			}
+
+
+
+
+			const loader = document.createElement("div");
+			loader.className = "loader";
+
+
+
+			for(i = 0; i < bundle_wrapper.length; i++){
+				bundle_wrapper[i].addEventListener("click", function(){
+					if(this.className.includes("price_500")){
+						purchase(500, this);
+					}else if(this.className.includes("prices price_1000")){
+						purchase(1000, this);
+					}else{
+						purchase(2000, this)
+					}
+				});
+			}
+
+
+
+
+
+
+
+		</script>
+
+
+
+</body>
+</html>

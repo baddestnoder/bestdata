@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="icon" href="/site_icon.jpg">
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome/css/all.css">
+	<link rel="stylesheet" type="text/css" href="/css/header.css">
+
+
+
+	<style type="text/css">
+
+
+		body{
+			background-color: white;
+		}
+		
+		@media screen and (min-width: 200px){
+
+
+			.account_wrapper{
+				display: block;
+				width: auto;
+				height: 30px;
+				margin: 31px 20px 0 auto;
+			}
+
+
+			.account_wrapper > i{
+				display: inline-block;
+				padding-right: 2px;
+				color: white;
+				font-size: 1.5rem;
+			}
+
+
+			.account_wrapper > span{
+				color: rgb(20, 230, 120);
+				font-size: 0.9rem;
+			}
+
+
+				
+
+			main{
+				font-size: 11px;
+			}
+
+
+			main > *{
+				width: 90%;
+				margin: auto;
+			}
+
+
+			h1{
+				margin-top: 40px;
+				color: rgb(255, 200, 20);
+				text-align: center;
+				font-size: 1.9rem;
+			}
+
+			h1 i{
+				padding: 17px 21px;
+				background-color: rgb(0, 50, 70);
+				border-radius: 50%;
+			}
+
+			.successful_h1 i{
+				padding: 17px 18.5px;
+				color: white;
+				background-color: rgb(0, 180, 100);
+			}
+
+			.reject_h1 i{
+				padding: 17px 19px;
+				background-color: rgb(200, 0, 0);
+				color: white;
+				font-size: 2.5rem;
+			}
+
+			h1 .pending{
+				color: rgb(205, 130, 0);
+				margin-top: 10px;
+				display: block;
+				font-size: 2rem;
+				font-weight: 600;
+			}
+
+
+			.successful_h1 .pending{
+				color: rgb(80, 80, 80);
+			}
+
+			h1 .pending_statement{
+				color: rgb(150, 150, 150);
+				margin-top: 10px;
+				display: block;
+				font-size: 1.5rem;
+				font-weight: 400;
+			}
+
+
+			h1 .amount{
+				color: rgb(0, 180, 100);
+				margin-top: 10px;
+				display: block;
+				font-size: 3rem;
+				font-weight: 600;
+			}
+
+
+			p{
+				line-height: 1.4;
+			}
+
+			
+
+			.breakdown_wrapper{
+				margin-top: 40px;
+				display: grid;
+				grid-template-columns: 1fr 1.3fr;
+				line-height: 1.4;
+				
+				width: 95%;
+				box-sizing: border-box;
+				
+			}
+
+			.breakdown_wrapper > p{
+				padding: 20px 5px;
+				color: black;
+				border-bottom: 1px solid rgb(200, 200, 200);
+			}
+
+
+
+			p.first_p{
+				color: rgb(150, 150, 150);
+				font-weight: 600;
+				padding-left: 20px;
+			}
+
+
+			p.second_p{
+				text-align: right;
+				padding-right: 20px;
+			}
+
+			
+
+			
+
+
+			.message{
+				margin-top: 40px;
+				font-size: 1.1rem;
+				color: rgb(70, 70, 70);
+				line-height: 1.5;
+			}
+
+			.message span{
+				font-weight: 600;
+				color: black;
+			}
+
+
+			h3{
+				margin: 30px auto;
+				text-align: center;
+				color: rgb(0, 200, 130);
+				font-weight: 400;
+			}
+
+			
+
+			
+		}
+
+
+
+		@media screen and (min-width: 250px){
+
+			main{
+				font-size: 12px;
+			}
+		}
+
+
+
+		@media screen and (min-width: 300px){
+
+			main{
+				font-size: 13px;
+			}
+		}
+
+
+
+		@media screen and (min-width: 350px){
+
+			main{
+				font-size: 14px;
+			}
+		}
+
+
+
+
+		@media screen and (min-width: 400px){
+
+			main{
+				max-width: 400px;
+				margin: auto;
+				font-size: 15px;
+			}
+		}
+
+
+
+		@media screen and (min-width: 500px){
+
+			main{
+				max-width: 500px;
+				margin: auto;
+			}
+		}
+
+	</style>
+
+	<title>Your Purchase Info</title>
+</head>
+
+
+
+
+
+
+
+
+
+<body>
+
+	
+	
+
+
+	<main role="main">
+		
+		
+
+		<%if(data.status == "Pending"){%>
+			<h1 class="pending_h1">
+				<i class="far fa-hourglass"></i>
+				<span class="pending">Pending</span>
+				<span class="pending_statement">Your fund is pending.</span>
+				<span class="amount">₦<%=data.amount%></span>
+			</h1>
+		<%}else if(data.status == "Approved"){%>
+			<h1 class="successful_h1">
+				<i class="fas fa-check"></i>
+				<span class="pending">Successful</span>
+				<%if(data.method == "Data Purchase"){%>
+				<span class="pending_statement">Your data has been initialized.</span>
+					
+				<%}else if(data.method == "Airtime Purchase"){%>
+					<span class="pending_statement">Your airtime has been initialized.</span>
+				<%}else{%>
+					<span class="pending_statement">Your fund has been approved.</span>
+				<%}%>
+				
+				<span class="amount">₦<%=data.amount%></span>
+			</h1>
+		<%}else{%>
+
+			<script type="text/javascript">
+				alert("It seems the recharge card you entered was incorrect or used by you...")
+			</script>
+
+			<h1 class="reject_h1">
+				<i class="far fa-angry"></i>
+				<span class="pending">Declined</span>
+				<span class="pending_statement">This fund has been rejected.</span>
+				<span class="amount">₦<%=data.amount%></span>
+			</h1>
+
+		<%}%>
+
+
+
+
+
+
+		<%let data_amount = "";%>
+		<%let expire = "";%>
+
+
+		<%if(data.airtime){%>
+			<%if(data.amount === "200"){%>
+				<%data_amount = "₦200.";%>
+			<%}else if(data.amount === "500"){%>
+				<%data_amount = "₦500 + ₦600 bonus.";%>
+			<%}else if(data.amount === "1000"){%>
+				<%data_amount = "₦1,000 + ₦600 bonus.";%>
+			<%}else if(data.amount === "1500"){%>
+				<%data_amount = "₦1,500 + ₦600 bonus.";%>
+			<%}else if(data.amount === "2000"){%>
+				<%data_amount = "₦2,000 + ₦3,000 bonus.";%>
+			<%}else if(data.amount === "2500"){%>
+				<%data_amount = "₦2,500 + ₦3,000 bonus.";%>
+			<%}else if(data.amount === "4000"){%>
+				<%data_amount = "₦4,000 + ₦3,000 bonus.";%>
+			<%}else{%>
+				<%data_amount = "₦5,000 + ₦3,000 bonus.";%>
+			<%}%>
+		<%}else{%>
+
+			<%if(data.amount === "500"){%>
+				<%data_amount = "6GB.";%>
+				<%expire = "14 days.";%>
+			<%}else if(data.amount === "1000"){%>
+				<%data_amount = "15GB + 11GB bonus.";%>
+				<%expire = "31 days.";%>
+			<%}else{%>
+				<%data_amount = "35GB + 11GB bonus.";%>
+				<%expire = "90 days.";%>
+			<%}%>
+		<%}%>
+
+		<div class="breakdown_wrapper">
+			<%if(data.method != "Data Purchase"){%>
+				<%if(data.airtime){%>
+					<p class="first_p">Buyer:</p> <p class="second_p"><%=data.buyer%></p>
+					<p class="first_p">Credited Airtime:</p> <p class="second_p"><%=data_amount%></p>
+				<%}else{%>
+					<p class="first_p">Card pin:</p> <p class="second_p"><%=data.card%></p>
+				<%}%>
+			<%}else{%>
+				<p class="first_p">Buyer:</p> <p class="second_p"><%=data.buyer%></p>
+
+				<p class="first_p">Data:</p> <p class="second_p"><%=data_amount%></p>
+				
+			<%}%>
+			
+			<p class="first_p">Amount:</p> <p class="second_p">₦<%=data.amount%></p>
+			<p class="first_p">Method:</p> <p class="second_p"><%=data.method%></p>
+			<p class="first_p">Status:</p> <p class="second_p"><%=data.status%></p>
+		</div>
+
+
+
+		<%if(data.status == "Pending"){%>
+			<p class="message"> <span>Important Note: </span> Because this is <%=data.method%> method, it will take about 10 minutes before approval. Other funding methods are faster... Please be patient with us and do not load the card on your phone because you will lose your bonus if your first purchase is an invalid or used card... Kindly contact us on WhatsApp for any inquiry (<%=contactInfo.number%>) </p>
+		<%}else{%>
+			<p style="text-align: center; margin-bottom: 30px" class="message">Kindly contact us on WhatsApp for any inquiry (<%=contactInfo.number%>) </p>
+		<%}%>
+
+		<h3>Thanks for Choosing Alti Data.</h3>
+		
+		
+	</main>
+
+</body>
+</html>

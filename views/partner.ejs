@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<link rel="icon" href="/site_icon.jpg">
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome/css/all.css">
+
+
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="/css/purchase.css">
+
+
+	<title>Partnership</title>
+
+
+
+
+
+
+
+
+	<style type="text/css">
+
+		body{
+			background-color: rgb(235, 235, 235);
+		}
+
+
+
+		.ans{
+			margin: 60px auto 0 auto;
+			width: 90%;
+			padding: 40px 15px;
+			box-sizing: border-box;
+			border-radius: 20px;
+			border: 1px solid rgb(200, 200, 200);
+			background-color: white;
+
+		}
+
+		h2, .ans h2{
+			font-size: 2.2rem;
+			text-align: center;
+			color: rgb(80, 80, 80);
+		}
+
+		.ans .other{
+			color: rgb(100, 100, 100);
+			font-size: 2rem;
+		}
+
+		.ans p{
+			font-size: 1.6rem;
+			margin-top: 15px;
+			color: rgb(70, 70, 70);
+			line-height: 1.5;
+		}
+
+		.ans p span{
+			margin: 40px 0 10px 0;
+			color: green;
+			display: block;
+			line-height: 1.2;
+		}
+
+
+
+
+
+		.recharge_form{
+			width: 90%;
+			border-radius: 20px;
+			margin: 20px auto 0 auto;
+			background-color: rgb(20, 45, 70);
+			padding: 20px 0;
+		}
+
+
+		.wallet_wrapper{
+			background-color: rgb(0, 25, 50);
+			padding: 20px 0 20px 5%;
+			box-sizing: border-box;
+			font-size: 0.8rem;
+			font-weight: 400;
+			color: rgb(250, 250, 250);
+		}
+
+		h1{
+			text-align: left;
+			line-height: 1.3;
+			font-size: 2.2rem;
+			border: none;
+			width: 60%;
+			margin-left: 8%;
+			margin-top: 30px;
+		}
+
+		.courage_p{
+			width: 87%;
+			margin: 20px 0 0 8%;
+			font-size: 1.1rem;
+			line-height: 1.4;
+			color: rgb(200, 200, 200);
+		}
+
+		input, select{
+			background-color: white;
+		}
+
+		button{
+			width: 100px;
+			margin-left: 2.5%;
+		}
+
+
+
+		.wallet_wrapper{
+			background-color: rgb(0, 25, 50);
+			padding: 20px 0 20px 5%;
+			box-sizing: border-box;
+			font-size: 1rem;
+			font-weight: 400;
+			color: rgb(250, 250, 250);
+		}
+
+
+
+
+	</style>
+</head>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+
+	<section class="wallet_wrapper">
+		<h3>Wallet Balance: <%=wallet%></h3>
+	</section>
+
+
+	<div class="main_wrapper">
+
+
+			<h2 style="margin-top: 80px; padding-top: 20px; border-radius: 1000px; border-top: 1px solid rgb(100, 100, 100)">Buy Wholesale Bundle</h2>
+
+		<div class="bundle_wrapper">
+
+
+
+			
+						
+				<div class="prices price_5,000">
+						<em class="second">+11GB</em>
+						<span>100GB <br> 6 Months</span>
+						<span><br> ₦5,000</span>
+				</div>
+
+
+
+
+				<div class="prices price_10,000">
+						<em class="second">+15GB</em>
+						<span>220GB <br> 6 months</span>
+						<span><br> ₦10,000</span>
+					</p>
+				</div>
+
+
+
+						
+				<div class="prices price_15,000">
+					<em class="second">+15GB</em>
+					<span>340GB <br> 6 Months</span>
+					<span><br> ₦15,000</span>
+				</div>
+			
+		</div>
+
+
+		<section style="display: none;" class="fund_button_wrapper">
+			<button class="fund_button" onclick="window.location='/fund_method' ">Oops!!! insufficient balance<br><span>Fund Wallet</span></button>
+		</section>
+		
+
+			<br><br>
+
+				
+
+
+				<div id="form" class="recharge_form">
+
+					<h3 style="text-align: right; margin-right: 15px;">Data Balance: 0</h3>
+
+					<h1>Send Data</h1>
+
+					<form  class="paymentForm" >
+
+						<label>Receiver's Number</label>
+						<input required type="number" name="recharge_pin" placeholder="Enter Receiver's Number">
+						<div class="card_error"></div>
+
+						<label>Data Bundle</label>
+						<select name="amount" required>
+							<option value="" disabled selected >Select Amount of Data</option>
+							<option value="200">100MB</option>
+							<option value="500">200MB</option>
+							<option value="1000">300MB</option>
+							<option value="200">500MB</option>
+							<option value="500">1GB</option>
+							<option value="1000">1.5GB</option>
+							<option value="200">2GB</option>
+							<option value="500">2.5GB</option>
+							<option value="1000">3GB</option>
+							<option value="200">4GB</option>
+							<option value="1000">5GB</option>
+							<option value="200">8GB</option>
+							<option value="1000">10GB</option>
+							<option value="200">12GB</option>
+							<option value="1000">15GB</option>
+							<option value="200">20GB</option>
+							<option value="1000">30GB</option>
+						</select>
+
+
+
+						<button class="submit_button">Sell</button>
+						
+					</form>
+				</div>
+
+		
+		<article class="ans1 ans">
+			
+
+			<h2 class="other">How to Sell</h2>
+
+			<p>
+				Our wholesale data is the cheapest you can get and it is simple to resale:
+				<br><br>
+				1. Purchase any of our wholesale package and it will top up on your Data Wallet.
+				<br><br>
+				2. Send any amount of data to your costumers by typing in their phone number and typing in the amount of data then click the "Sell" button.
+
+				<br><br>
+
+				* We do not regulate prices you are to charge your costumer for data sales, you are to sell at your convenience price... Do your best to sell off your data before the expiry date.
+				<br><br>
+				* You are to receive payment from your costumers directly, they are not paying to our platform but directly to you.
+			</p>
+
+
+		</article>
+
+
+		
+
+		<br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+
+
+		<script type="text/javascript">
+
+
+
+			const paymentForm = document.querySelector(".paymentForm");
+
+			paymentForm.addEventListener("submit", (e)=>{
+				e.preventDefault()
+
+				alert("Transaction fail... Your wholesale bundle is zero. You have to buy wholesale bundle before trying to sell out.")
+			})
+			
+
+
+			const bundle_wrapper = document.querySelector(".bundle_wrapper").children
+
+
+			for(i = 0; i < bundle_wrapper.length; i++){
+				bundle_wrapper[i].addEventListener("click", function(){
+					alert("Insufficient Fund!!! Your wallet balance is low.")
+					document.querySelector(".fund_button_wrapper").style.display = "block";
+				});
+			}
+
+		</script>
+
+			
+		
+
+
+</body>
+</html>
