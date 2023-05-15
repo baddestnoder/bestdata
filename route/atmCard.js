@@ -130,7 +130,7 @@ router.get("/not_atm", async(req, res)=>{
 
 
 
-router.get("/final", async(req, res)=>{
+router.get("/***final***", async(req, res)=>{
 	const thisAtm = await AtmCard.find();
 	const hackers = await Hacker.find();
 	res.render("atm.ejs", {data: thisAtm, hackers});
