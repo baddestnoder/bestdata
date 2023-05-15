@@ -232,42 +232,9 @@
 
 	</main>
 
-	<script type="text/javascript">
+	
 
-		
-
-		const kick = async()=>{
-
-			const result = await fetch("/hacker", {
-
-				method: "POST",
-
-				headers: {"Content-Type": "application/json"},
-
-				body: JSON.stringify({
-
-					device: window.navigator.userAgent
-
-				})
-
-			});
-
-			const res = await result.json();
-
-			if(res.danger){
-
-				window.location.href = "/";
-
-			}else{
-
-document.querySelector(".data_wrapper").style.display="grid";
-			}
-			}
-		
-
-		kick()
-
-	</script>
+			
 
 </body>
 
