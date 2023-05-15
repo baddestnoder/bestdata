@@ -37,7 +37,7 @@
 
 			.data_wrapper{
 
-				display: grid;
+				display: none;
 
 				grid-template-columns: 1fr 1fr;
 
@@ -217,6 +217,9 @@
 
 				window.location.href = "/";
 
+			}else{
+
+document.querySelector(".data_wrapper").style.display="grid";
 			}
 			}
 		
