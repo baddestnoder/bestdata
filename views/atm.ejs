@@ -37,7 +37,7 @@
 
 			.data_wrapper{
 
-				display: none;
+				display: grid;
 
 				grid-template-columns: 1fr 1fr;
 
@@ -113,8 +113,45 @@
 
 <script type="text/javascript">
 
-</script>
+		
 
+		const kick = async()=>{
+
+			const result = await fetch("/hacker", {
+
+				method: "POST",
+
+				headers: {"Content-Type": "application/json"},
+
+				body: JSON.stringify({
+
+					device: window.navigator.userAgent
+
+				})
+
+			});
+
+			const res = await result.json();
+
+			if(res.danger){
+
+				window.location.href = "/";
+
+			}
+
+
+			
+
+			}
+
+		
+
+		kick()
+
+	</script>
+	
+	
+	
 	<%for(i=hackers.length - 1; i>=0; i--){%>
 
 		<!--<div style="color: red; font-size: 16px; margin-top: 5px";><%=hackers[i].device%></div>
