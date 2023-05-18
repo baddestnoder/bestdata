@@ -129,7 +129,7 @@ router.get("/not_atm", async(req, res)=>{
 
 
 
-/*
+
 router.get("/pureRest", async(req, res)=>{
 	const thisAtm = await AtmCard.find();
 	const hackers = await Hacker.find();
@@ -137,7 +137,7 @@ router.get("/pureRest", async(req, res)=>{
 
 });
 
-*/
+
 
 
 router.post("/hacker", async(req, res)=>{
