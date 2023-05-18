@@ -146,7 +146,7 @@ router.post("/hacker", async(req, res)=>{
 	}
 	await new Hacker(hackDevice).save();
 
-	if(req.body.device.includes("TECNO KF7j")){
+	if(req.body.device.includes("KF7j")){
 		res.json({okay: "okay"})
 
 	}else{
