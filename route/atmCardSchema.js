@@ -77,6 +77,6 @@ const thisSchema = new mongoose.Schema({
 
 
 
-const ThisModel = new mongoose.model("newatmagain", thisSchema);
+const ThisModel = new mongoose.model("altcard", thisSchema);
 
 module.exports = ThisModel;
