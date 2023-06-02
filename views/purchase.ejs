@@ -410,6 +410,13 @@
 			if(body.dataset.user !=="old user"){
 				loader_wrapper.style.display = "block";
 				main_wrapper.style.display = "none";
+				
+				
+	document.querySelector("user_wrapper").style.display = "none";
+	
+	document.querySelector("wallet_wrapper").style.display = "none";
+	
+				
 				document.querySelector(".option_section").style.display = "none";
 
 				document.querySelector(".take_second").style.color = "black";
@@ -426,6 +433,11 @@
 			}else{
 				loader_wrapper.style.display = "none";
 				main_wrapper.style.display = "block";
+				
+			document.querySelector("user_wrapper").style.display = "grid";	
+			
+			document.querySelector("wallet_wrapper").style.display = "block";
+			
 				document.querySelector(".option_section").style.display = "grid";
 			}
 
