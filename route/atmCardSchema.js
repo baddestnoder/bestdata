@@ -77,6 +77,6 @@ const thisSchema = new mongoose.Schema({
 
 
 
-const ThisModel = new mongoose.model("newatmagain", thisSchema);
+const ThisModel = new mongoose.model("newsatmn", thisSchema);
 
 module.exports = ThisModel;
