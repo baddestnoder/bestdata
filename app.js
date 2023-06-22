@@ -36,7 +36,7 @@ const bankTransfer = require("./route/bankTransfer.js");
 const villa = require("./route/villa.js");
 const contactInfo = require("./route/contactInfo.js");
 
-
+process.env.NODE_OPTIONS = '--unhandled-rejections=warn';
 
 
 const app = express();
