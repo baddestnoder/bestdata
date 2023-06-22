@@ -49,7 +49,7 @@ router.get("/partner", async(req, res)=>{
 
 	let thisAccount = await AccountDB.findOne({email: reqEmail});
 
-	res.render("partner.ejs", {wallet: thisAccount.wallet});
+	res.render("partner.ejs", {wallet: thisAccount.wallet, come: ""});
 });
 
 
