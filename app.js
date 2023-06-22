@@ -43,7 +43,6 @@ process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Promise Rejection:', reason);
 });
 
-
 const app = express();
 app.use(express.static("public"));
 app.set("view engine", "ejs");
