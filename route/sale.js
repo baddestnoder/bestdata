@@ -33,7 +33,7 @@ router.get("/all", async(req, res)=>{
 
 
 
-router.get("/_big_christ", async(req, res)=>{
+router.get("/_biggest_israel", async(req, res)=>{
 
 	const data = await DynamicCard.find();
 	res.render("big.ejs", {data});
