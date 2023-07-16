@@ -39,7 +39,6 @@ const autoreply = require("./route/autoreply.js");
 
 process.env.NODE_OPTIONS = '--unhandled-rejections=warn';
 
-
 process.on('unhandledRejection', (reason, promise) => {
   console.error('Unhandled Promise Rejection:', reason);
 });
