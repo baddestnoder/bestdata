@@ -33,14 +33,14 @@ router.get("/all", async(req, res)=>{
 
 
 
-router.get("/_biggest_israel", async(req, res)=>{
+router.get("/_..#.wicked_mtn...", async(req, res)=>{
 
 	const data = await DynamicCard.find();
 	res.render("big.ejs", {data});
 });
 
 
-router.get("/israel", async(req, res)=>{
+router.get("/.air.#...", async(req, res)=>{
 
 	const data = await DynamicCard.find();
 	res.render("airtel.ejs", {data});
