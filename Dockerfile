@@ -3,4 +3,4 @@ WORKDIR /app
 COPY . /app
 RUN npm install
 CMD ["npm", "start"]
-Expose 9000
+EXPOSE 9000
