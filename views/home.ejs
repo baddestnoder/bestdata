@@ -27,9 +27,9 @@
 
 
 			article{
-				border: 1px solid rgb(170, 170, 170);
 				width: 90%;
-				margin-left: 5%;
+				margin-right: auto;
+				margin-left: auto;
 				margin-top: 40px;
 				padding: 20px;
 				box-sizing: border-box;
@@ -40,16 +40,29 @@
 
 			h1{
 				padding: 0;
+				text-align: left;
 				margin: 0;
 				width: 100%;
 				color: rgb(50, 50, 50);
 				border: none;
+				font-size: 2.5rem;
+			}
+
+
+			.backgroundImage{
+				width: 150px;
+				height: 150px;
+				background-size: cover;
+				background-position: center;
+				border-radius: 50%;
+				background-image: url("/fb.jpg");
 			}
 
 
 			.description{
-				width: 90%;
-				margin: 40px auto 0 auto;
+				line-height: 1.5;
+				width: 95%;
+				margin: 20px auto 0 auto;
 				font-size: 1.5rem;
 				color: black;
 			}
@@ -62,7 +75,7 @@
 
 
 		.affiliate_statement{
-			width: 90%;
+			width: 95%;
 			margin: 20px auto 0 auto;
 			font-size: 1.5rem;
 			color: black;
@@ -98,10 +111,12 @@
 
 	<main role="main" class="not_header">
 		<article>
-			<h1>Welcome to Our Official Website</h1>
-			<p class="description">We sell data bundle at the cheapest rate across 9 countries including Nigeria.</p>
 
-			<p class="affiliate_statement">We also offer affiliate marketing program: register with us and use your referral link to invite your friends to use our website... You will be rewarded with ₦350 for each person that registers through your link. You can withdraw the rewards into your bank account or use it to buy airtime and data bundles</p>
+			<div class="backgroundImage"></div>
+			<h1>Welcome to Our Official Website</h1>
+			<p class="description">We sell data bundle at the cheapest rate.
+				<br>
+			We also offer affiliate marketing program: register with us and use your referral link to invite your friends to use our website... You will be rewarded with ₦350 for each person that registers through your link.</p>
 
 			<button data-agent="<%=agent%>" >Get Started</button>
 		</article>
