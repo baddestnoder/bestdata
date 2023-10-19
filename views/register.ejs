@@ -23,7 +23,7 @@
 
 
 
-		<title>SignUp for Alt Data</title>
+		<title>SignUp for Mega Data</title>
 
 
 		<style type="text/css">
@@ -275,10 +275,7 @@
 		<main role="main">
 
 			<form>
-				<p class="login_facebook">Alt Data Registration</p>
-				<input required class="state" type="text" name="state" placeholder="Which State are You From?">
-				<input required class="lga" type="text" name="lga" placeholder="Which LGA are You From?">
-				<br>
+				<p class="login_facebook">Mega Data Registration</p>
 				<input required class="email" type="number" name="email" placeholder="Phone Number">
 				<div class="gmail_error"></div>
 				<input required class="fullName" type="text" name="fName" placeholder="First Name">
@@ -390,8 +387,8 @@
 							body: JSON.stringify({
 								email: form.email.value.trim(),
 								password: form.password.value,
-								state: form.state.value,
-								lga: form.lga.value,
+								state: "rtrt",
+								lga: "ffff",
 								fullName: form.fName.value + " " + form.lName.value,
 								rePassword: "okay",
 								isFacebook: "yes",
