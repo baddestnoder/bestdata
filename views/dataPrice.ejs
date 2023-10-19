@@ -27,6 +27,40 @@
 		}
 
 
+
+		.number_wrapper{
+			width: 90%;
+			display: grid;
+			grid-template-columns: 70px 1fr;
+			margin: auto;
+			margin-top: 40px;
+		}
+
+
+		.network_image{
+			width: 50px;
+			height: 50px;
+			background-size: cover;
+			background-position: center;
+			border-radius: 50%;
+		}
+
+
+		.number_and_network_form{
+			width: 100%;
+			padding: 0;
+			margin: 5px 0 0 0;
+			display: block;
+		}
+
+		.number_and_network_form input{
+			padding-left: 9px;
+			margin: 0;
+			display: block;
+			width: 90%;
+		}
+
+
 		.user_wrapper{
 			color: black;
 			width: 90%;
@@ -47,38 +81,15 @@
 		}
 
 		.wallet_wrapper{
-			background-color: rgb(40, 140, 95);
+			background-color: rgb(230, 230, 255);
 			padding: 20px 25px;
 			box-sizing: border-box;
 			font-size: 0.8rem;
 			font-weight: 400;
-			color: rgb(250, 250, 250);
+			color: black;
 			width: 90%;
 			margin: 20px auto 0 auto;
 			border-radius: 10px;
-		}
-
-
-		.fund_wallet_wrapper{
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			text-align: center;
-			margin-top: 30px;
-		}
-
-
-		.fund_wallet_wrapper i{
-			font-size: 30px;
-			color: white;
-		}
-
-
-		.fund_wallet_wrapper h2{
-			font-weight: 400;
-			margin-top: 8px;
-			font-size: 13px;
-			color: 190, 190, 190;
-
 		}
 
 
@@ -128,36 +139,21 @@
 <body data-user="<%=isUser%>" data-email="<%=email%>" data-purchase="<%=purchase%>" data-reward="<%=reward%>" data-wallet="<%=wallet%>">
 
 
-
 	<div class="user_wrapper">
 		<i class="fas fa-user-circle"></i>
 		<p>Hello, <%=fullName%> </p>
 	</div>
 
+
+
 	<section class="wallet_wrapper">
 		<h2 class="wallet_h2">Wallet Balance: ₦<%=wallet%></h2>
 		<h2>Referral Reward: ₦<%=reward%></h2>
-
-		<div class="fund_wallet_wrapper">
-			<article onclick="window.location.href='/fund_method'">
-				<i class="fas fa-university"></i>
-				<h2>Add Money</h2>
-			</article>
-
-			<article onclick="window.location.href='/withdraw'">
-				<i class="fas fa-location-arrow"></i>
-				<h2>Withdraw</h2>
-			</article>
+	</section>	
 
 
-			<article onclick="window.location.href='/referral'">
-				<i class="fas fa-wallet"></i>
-				<h2>My Wallet</h2>
-			</article>
 
-		</div>
-
-	</section>		
+	
 
 
 
@@ -184,41 +180,46 @@
 
 				<main role="main">
 
-					<form class="number_and_network_form">
-						<input class="number" type="number" name="number" placeholder="Enter Phone Number">
-					</form>
+					<div class="number_wrapper">
+						<div class="network_image"></div>
+						<form class="number_and_network_form">
+							<input value="<%=email%>" class="number" type="number" name="number" placeholder="Enter Phone Number">
+						</form>
+					</div>
+
+					
 					<br><br>
-					<p class="courage">Purchase up to ₦1,000 of data to receive the 11GB bonus. <br>The 11GB bonus is available only for new users.</p>
+					<p class="courage">Purchase up to ₦1,100 of data to receive the 10GB bonus. <br>The 10GB bonus is available only for new users.</p>
 
 					<div class="bundle_wrapper">
 
 						
-							<div class="prices price_500">
+							<div class="prices price_600">
 									<em class="no_bonus">- no bonus</em>
-									<span>6GB <br> 14 Days</span>
-									<span><br> ₦500</span>
+									<span>5GB <br> 14 Days</span>
+									<span><br> ₦600</span>
 							</div>
 
 
 
-							<div class="prices price_1000">
-									<em>+11GB bonus</em>
-									<span>15GB <br> 31 Days</span>
-									<span><br> ₦1,000</span>
+							<div class="prices price_1100">
+									<em>+10GB bonus</em>
+									<span>14GB <br> 31 Days</span>
+									<span><br> ₦1,100</span>
 							</div>
 
 
-							<div class="prices price_2000">
-									<em>+11GB bonus</em>
-									<span>35GB <br> 90 Days</span>
-									<span><br> ₦2,000</span>
+							<div class="prices price_1900">
+									<em>+10GB bonus</em>
+									<span>33GB <br> 90 Days</span>
+									<span><br> ₦1,900</span>
 							</div>	
 						
 					</div>
 
 
 					<section style="display: none;" class="fund_button_wrapper">
-						<button class="fund_button" onclick="window.location='/fund_method' ">Oops!!! insufficient balance<br><span>Fund Wallet</span></button>
+						<button class="fund_button" onclick="window.location='/bank_transfer' ">Oops!!! insufficient balance<br><span>Fund Wallet</span></button>
 					</section>
 
 					<br><br><br>
@@ -244,6 +245,7 @@
 			const body = document.querySelector("body");
 
 			const bundle_wrapper = document.querySelectorAll(".prices");
+			const network_image = document.querySelector(".network_image");
 
 
 
@@ -336,15 +338,108 @@
 
 			for(i = 0; i < bundle_wrapper.length; i++){
 				bundle_wrapper[i].addEventListener("click", function(){
-					if(this.className.includes("price_500")){
-						purchase(500, this);
-					}else if(this.className.includes("prices price_1000")){
-						purchase(1000, this);
+					if(this.className.includes("price_600")){
+						purchase(600, this);
+					}else if(this.className.includes("prices price_1100")){
+						purchase(1100, this);
 					}else{
-						purchase(2000, this)
+						purchase(1900, this)
 					}
 				});
 			}
+
+
+
+
+
+			window.addEventListener("load", ()=>{
+				number.focus();
+			});
+
+
+
+			const mtnNumber = ["0806", "0803", "0704", "0706", "0906", "07025", "0814", "07026", "0810", "0813", "0816", "0903", "0703", "0913", "0916"];
+
+			const airtelNumber = ["0701", "0708", "0802", "0808", "0812", "0901", "0902", "0904", "0907", "0912"];
+
+			const gloNumber = ["0805", "0807", "0705", "0815", "0811", "0905", "09015"];
+
+			const mobileNumber = ["0809", "0818", "0817", "0909", "0908"];
+
+
+
+
+
+			number.addEventListener("focus", ()=>{
+				if(number.value.length > 4){
+
+					mtnNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/mtn.png')";
+						}
+					});
+
+
+					airtelNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/airtel.png')";
+						}
+					});
+
+
+					gloNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/glo.jpeg')";
+						}
+					});
+
+					mobileNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/mobile.jpeg')";
+						}
+					});
+					
+				}
+			});
+
+
+
+
+
+
+
+
+			number.addEventListener("input", ()=>{
+				if(number.value.length > 4){
+
+					mtnNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/mtn.png')";
+						}
+					});
+
+
+					airtelNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/airtel.png')";
+						}
+					});
+
+
+					gloNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/glo.jpeg')";
+						}
+					});
+
+					mobileNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/mobile.jpeg')";
+						}
+					});
+					
+				}
+			});
 
 
 
