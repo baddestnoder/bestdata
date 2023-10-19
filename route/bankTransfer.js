@@ -59,5 +59,21 @@ router.get("/bank_transfer", async(req, res)=>{
 
 
 
+router.get("/getCurrentAmount", async(req, res)=>{
+	getEmail(req, res);
+
+	if(isUser === true){
+		try{
+			const thisAccount = await AccountDB.findOne({email: reqEmail});
+			res.json({currentAmount: thisAccount.wallet});
+		}catch(error){
+			console.log(error)
+		}
+		
+	}
+});
+
+
+
 
 module.exports = router;
