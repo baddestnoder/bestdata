@@ -4,7 +4,7 @@
 
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="I found this website that sales data very cheap, I think you will be interested... They give 11GB bonus to new users and if you invite someone to the website, you get 150 Naira for each person...">
+	<meta name="description" content="I found this website that sales data very cheap, I think you will be interested... They give 10GB bonus to new users and if you invite someone to the website, you get 150 Naira for each person...">
 
 	<link rel="icon" href="/site_icon.jpg">
 
@@ -44,6 +44,7 @@
 		}
 
 		.user_wrapper i{
+			color: rgb(0, 30, 70);
 			font-size: 40px;
 		}
 
@@ -55,37 +56,53 @@
 		}
 
 		.wallet_wrapper{
-			background-color: rgb(40, 140, 95);
+			background-color: rgb(230, 230, 255);
 			padding: 20px 25px;
 			box-sizing: border-box;
 			font-size: 0.8rem;
 			font-weight: 400;
-			color: rgb(250, 250, 250);
+			color: black;
 			width: 90%;
 			margin: 20px auto 0 auto;
 			border-radius: 10px;
 		}
 
 
+		.wallet_wrapper > h2{
+			margin-top: 4px;
+			font-size: 1.4rem;
+		}
+
+
 		.fund_wallet_wrapper{
+			background-color: rgb(245, 245, 245);
 			display: grid;
 			grid-template-columns: 1fr 1fr 1fr;
 			text-align: center;
+			padding: 15px 0;
 			margin-top: 30px;
 		}
 
 
 		.fund_wallet_wrapper i{
-			font-size: 2rem;
+			font-size: 2.5rem;
+			color: rgb(130, 30, 160);
+		}
+
+		.fund_wallet_wrapper .fa-plus{
+			padding: 3px 6px;
+			border-radius: 6px;
+			background-color: rgb(130, 30, 160);
 			color: white;
+			font-size: 2.3rem;
 		}
 
 
 		.fund_wallet_wrapper h2{
 			font-weight: 400;
 			margin-top: 8px;
-			font-size: 0.9rem;
-			color: rgb(230, 230, 230);
+			font-size: 1.1rem;
+			color: black;
 
 		}
 
@@ -99,7 +116,6 @@
 			grid-template-columns: 1fr 1fr 1fr;
 			grid-gap: 15px 0px;
 			text-align: center;
-			background-color: rgb(240, 240, 240);
 			border-radius: 20px;
 			padding: 20px 0;
 		}
@@ -109,24 +125,51 @@
 			background-color: white;
 			padding: 15px 0px;
 			border-radius: 10px;
-			background-color: rgb(230, 230, 230);
+			border: 1px solid rgb(200, 200, 200);
+			background-color: white;
 			width: 90%;
 			margin-left: 5%;
 			box-sizing: border-box;
 		}
 
+
+
 		.option_section > article > i{
-			width: 40px;
-			height: 35px;
-			padding: 20px 15px 15px 15px;
-			border-radius: 10px;
-			background-color: white;
-			border: 1px solid darkgreen;
+			color: rgb(0, 50, 200);
+			height: 40px;
+		}
+
+
+		.option_section > article > .fa-whatsapp{
+			color: rgb(0, 220, 0);
+		}
+
+
+
+		.option_section > article > .fa-hand-holding-usd{
+			color: red;
+		}
+
+
+		.option_section > article > .fa-cart-arrow-down{
+			color: rgb(255, 110, 100);
+		}
+
+
+		.option_section > article > .fa-phone-volume{
+			color: rgb(245, 190, 0);
+		}
+
+
+		.option_section > article > .fa-recycle{
+			color: rgb(0, 210, 210);
 		}
 
 		
+
+		
 		.option_section > article > h2{
-			color: red;
+			color: black;
 			font-size: 1rem;
 			font-weight: 400;
 			font-family: arial;
@@ -154,8 +197,8 @@ display: none;
 		}
 		.loader_wrapper .fas{
 			font-size: 7rem;
-			animation-name: color_change;
-			animation-duration: 3000ms;
+			animation-name: change_rotate;
+			animation-duration: 2000ms;
 			animation-timing-function: linear;
 			animation-iteration-count: infinite;
 			text-align: center;
@@ -163,30 +206,17 @@ display: none;
 
 
 
-				@keyframes color_change{
+				@keyframes change_rotate{
 
 					0%{
-						color: white;
+						transform: rotate(0deg);
+						color: blue;
 					}
-
-					25%{
-						color: lime;
-					}
-
-
-					50%{
-						color: red;
-					}
-
-
-					75%{
-						color: white;
-					}
-
 
 
 					100%{
-						color: white;
+						transform: rotate(360deg);
+						color: green;
 					}
 				}
 
@@ -217,27 +247,29 @@ display: none;
 	<section class="wallet_wrapper">
 		<h2>Wallet Balance: ₦<%=data.wallet%></h2>
 		<h2>Referral Reward: ₦<%=data.reward%></h2>
-
-		<div class="fund_wallet_wrapper">
-			<article onclick="window.location.href='/fund_method'">
-				<i class="fas fa-university"></i>
-				<h2>Add Money</h2>
-			</article>
-
-			<article onclick="window.location.href='/withdraw'">
-				<i class="fas fa-location-arrow"></i>
-				<h2>Withdraw</h2>
-			</article>
-
-
-			<article onclick="window.location.href='/referral'">
-				<i class="fas fa-wallet"></i>
-				<h2>My Wallet</h2>
-			</article>
-
-		</div>
-
 	</section>
+
+
+
+
+	<div class="fund_wallet_wrapper">
+		<article onclick="window.location.href='/fund_method'">
+			<i class="fas fa-plus"></i>
+			<h2>Add Money</h2>
+		</article>
+
+		<article onclick="window.location.href='/withdraw'">
+			<i class="fas fa-location-arrow"></i>
+			<h2>Withdraw</h2>
+		</article>
+
+
+		<article onclick="window.location.href='/referral'">
+			<i class="fas fa-wallet"></i>
+			<h2>My Wallet</h2>
+		</article>
+
+	</div>
 
 
 	
@@ -252,10 +284,13 @@ display: none;
 		</article>
 
 
-		<article onclick="window.location.href='/referral#referral_section'">
-			<i class="fas fa-hand-holding-usd"></i>
-			<h2>Refer & Earn</h2>
+
+
+		<article onclick="window.location.href='/partner'">
+			<i class="fas fa-cart-arrow-down"></i>
+			<h2>Resell Data</h2>
 		</article>
+
 
 
 		<article onclick="window.location.href='/recharge_price'">
@@ -265,9 +300,9 @@ display: none;
 
 
 
-		<article onclick="window.location.href='/partner'">
-			<i class="fas fa-cart-arrow-down"></i>
-			<h2>Resell Data</h2>
+		<article onclick="window.location.href='/referral#referral_section'">
+			<i class="fas fa-hand-holding-usd"></i>
+			<h2>Refer & Earn</h2>
 		</article>
 
 		<article onclick="window.location.href='/chatting' ">
@@ -303,7 +338,7 @@ display: none;
 
 
 		<div style="display: none; text-align: center;" class="loader_wrapper">
-			<i class="fas fa-wifi"></i>
+			<i class="fas fa-recycle"></i>
 			<br><br>
 			<p class="wait">Please wait...</p>
 			<p class="take_second"></p>
@@ -413,18 +448,16 @@ display: none;
 				main_wrapper.style.display = "none";
 				
 				
-	document.querySelector(".user_wrapper").style.display = "none";
-	
-	document.querySelector(".wallet_wrapper").style.display = "none";
-	
-				
+				document.querySelector(".user_wrapper").style.display = "none";
+				document.querySelector(".wallet_wrapper").style.display = "none";
+				document.querySelector(".fund_wallet_wrapper").style.display = "none";
 				document.querySelector(".option_section").style.display = "none";
 
 				document.querySelector(".take_second").style.color = "black";
 				setTimeout(()=>{
 					document.querySelector(".take_second").textContent = "Verifying your account..."
 					setTimeout(()=>{
-						document.querySelector(".take_second").innerHTML = "<br>Purchase up to N1,000 of data and receive your 11GB welcome bonus.";
+						document.querySelector(".take_second").innerHTML = "<br>Purchase up to N1,100 of data and receive your 10GB welcome bonus.";
 						setTimeout(()=>{
 							window.location.href = "/purchase";
 						}, 13000);
@@ -435,10 +468,9 @@ display: none;
 				loader_wrapper.style.display = "none";
 				main_wrapper.style.display = "block";
 				
-			document.querySelector(".user_wrapper").style.display = "grid";	
-			
-			document.querySelector(".wallet_wrapper").style.display = "block";
-			
+				document.querySelector(".user_wrapper").style.display = "grid";	
+				document.querySelector(".wallet_wrapper").style.display = "block";
+				document.querySelector(".fund_wallet_wrapper").style.display = "grid";
 				document.querySelector(".option_section").style.display = "grid";
 			}
 
