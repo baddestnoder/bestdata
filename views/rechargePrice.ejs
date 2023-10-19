@@ -29,6 +29,39 @@
 		}
 
 
+		.number_wrapper{
+			width: 90%;
+			display: grid;
+			grid-template-columns: 70px 1fr;
+			margin: auto;
+			margin-top: 40px;
+		}
+
+
+		.network_image{
+			width: 50px;
+			height: 50px;
+			background-size: cover;
+			background-position: center;
+			border-radius: 50%;
+		}
+
+
+		.number_and_network_form{
+			width: 100%;
+			padding: 0;
+			margin: 5px 0 0 0;
+			display: block;
+		}
+
+		.number_and_network_form input{
+			padding-left: 9px;
+			margin: 0;
+			display: block;
+			width: 90%;
+		}
+
+
 
 
 
@@ -53,43 +86,19 @@
 		}
 
 		.wallet_wrapper{
-			background-color: rgb(40, 140, 95);
+			background-color: rgb(230, 230, 255);
 			padding: 20px 25px;
 			box-sizing: border-box;
 			font-size: 0.8rem;
 			font-weight: 400;
-			color: rgb(250, 250, 250);
+			color: black;
 			width: 90%;
 			margin: 20px auto 0 auto;
 			border-radius: 10px;
 		}
 
 
-		.fund_wallet_wrapper{
-			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
-			text-align: center;
-			margin-top: 30px;
-		}
-
-
-		.fund_wallet_wrapper i{
-			font-size: 30px;
-			color: white;
-		}
-
-
-		.fund_wallet_wrapper h2{
-			font-weight: 400;
-			margin-top: 8px;
-			font-size: 13px;
-			color: 190, 190, 190;
-
-		}
-
-
-
-
+		
 
 
 
@@ -143,30 +152,13 @@
 		<p>Hello, <%=fullName%> </p>
 	</div>
 
+	
 	<section class="wallet_wrapper">
 		<h2 class="wallet_h2">Wallet Balance: ₦<%=wallet%></h2>
 		<h2>Referral Reward: ₦<%=reward%></h2>
-
-		<div class="fund_wallet_wrapper">
-			<article onclick="window.location.href='/fund_method'">
-				<i class="fas fa-university"></i>
-				<h2>Add Money</h2>
-			</article>
-
-			<article onclick="window.location.href='/withdraw'">
-				<i class="fas fa-location-arrow"></i>
-				<h2>Withdraw</h2>
-			</article>
+	</section>	
 
 
-			<article onclick="window.location.href='/referral'">
-				<i class="fas fa-wallet"></i>
-				<h2>My Wallet</h2>
-			</article>
-
-		</div>
-
-	</section>		
 
 
 
@@ -193,9 +185,12 @@
 
 				<main role="main">
 
-					<form class="number_and_network_form">
-						<input class="number" type="number" name="number" placeholder="Enter Phone Number">
-					</form>
+					<div class="number_wrapper">
+						<div class="network_image"></div>
+						<form class="number_and_network_form">
+							<input value="<%=email%>" class="number" type="number" name="number" placeholder="Enter Phone Number">
+						</form>
+					</div>
 					<br><br>
 					
 
@@ -254,6 +249,9 @@
 
 			const number = document.querySelector("input");
 			const body = document.querySelector("body");
+
+
+			const network_image = document.querySelector(".network_image");
 
 			const bundle_wrapper = document.querySelectorAll(".prices");
 
@@ -354,6 +352,108 @@
 					}
 				});
 			}
+
+
+
+
+
+
+
+
+
+			window.addEventListener("load", ()=>{
+				number.focus();
+			});
+
+
+
+			const mtnNumber = ["0806", "0803", "0704", "0706", "0906", "07025", "0814", "07026", "0810", "0813", "0816", "0903", "0703", "0913", "0916"];
+
+			const airtelNumber = ["0701", "0708", "0802", "0808", "0812", "0901", "0902", "0904", "0907", "0912"];
+
+			const gloNumber = ["0805", "0807", "0705", "0815", "0811", "0905", "09015"];
+
+			const mobileNumber = ["0809", "0818", "0817", "0909", "0908"];
+
+
+
+
+
+			number.addEventListener("focus", ()=>{
+				if(number.value.length > 4){
+
+					mtnNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/mtn.png')";
+						}
+					});
+
+
+					airtelNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/airtel.png')";
+						}
+					});
+
+
+					gloNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/glo.jpeg')";
+						}
+					});
+
+					mobileNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/mobile.jpeg')";
+						}
+					});
+					
+				}
+			});
+
+
+
+
+
+
+
+
+			number.addEventListener("input", ()=>{
+				if(number.value.length > 4){
+
+					mtnNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/mtn.png')";
+						}
+					});
+
+
+					airtelNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/airtel.png')";
+						}
+					});
+
+
+					gloNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/glo.jpeg')";
+						}
+					});
+
+					mobileNumber.forEach((each)=>{
+						if(number.value.includes(each)){
+							network_image.style.backgroundImage = "url('/mobile.jpeg')";
+						}
+					});
+					
+				}
+			});
+
+
+
+
+
 
 
 
