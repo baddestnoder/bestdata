@@ -10,6 +10,8 @@
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+
+
 	<link rel="icon" href="/site_icon.jpg">
 
 	<link rel="stylesheet" type="text/css" href="/css/purchase.css">
@@ -34,6 +36,7 @@
 				font-size: 1.6rem;
 				color: rgb(240, 240, 240);
 				padding: 15px 0 15px 20px;
+				box-sizing: border-box;
 				font-weight: 600;
 				border: none;
 				width: 100%;
@@ -45,18 +48,19 @@
 
 			.profile_pic{
 				background-color: white;
-				padding: 30px 0;
+				padding: 30px 0 50px 0;
 				width: 90%;
 				margin-left: 5%;
 				margin-top: 15px;
 				color: rgb(5, 130, 200);
 				text-align: center;
 				font-size: 1.9rem;
-				border-radius: 15px;
+				border-radius: 15px 15px 0 0;
 			}
 
 
 			.profile_pic i{
+				color: green;
 				padding: 17px 20px;
 				background-color: rgb(235, 235, 250);
 				border-radius: 50%;
@@ -95,17 +99,24 @@
 
 			
 			.data_section{
-				margin-top: 10px;
 				display: grid;
-				grid-template-columns: 1fr 1.3fr;
+				grid-template-columns: 45px 1fr 1.3fr;
 				line-height: 1.4;
 				background-color: white;
 				width: 90%;
 				margin-left: 5%;
 				padding: 20px;
-				border-radius: 15px 15px 0 0;
+				border-radius: 0 0 0 0;
 				box-sizing: border-box;
 				
+			}
+
+
+			.data_section i{
+				color: rgb(30, 140, 190);
+				font-size: 1.8rem;
+				padding: 20px;
+				border-bottom: 1px solid rgb(200, 200, 200);
 			}
 
 
@@ -122,7 +133,8 @@
 
 
 			p.first_p{
-				color: rgb(80, 80, 80);
+				font-weight: 600;
+				color: rgb(10, 10, 10);
 				font-weight: 600;
 				padding-left: 20px;
 			}
@@ -136,34 +148,53 @@
 
 
 			.referral_section{
-				background-color: white;
-				width: 90%;
-				padding: 20px;
+				background-color: rgb(0, 190, 140);
+				padding: 20px 0;
 				border-radius: 15px;
 				box-sizing: border-box;
-				margin: 30px 0 0 5%;
+				margin: 30px auto;
 			}
 
 
 			h2{
-				color: rgb(100, 100, 100);
+				color: white;
+				padding: 15px 0;
+				border-radius: 30px;
+				background-color: rgb(0, 130, 80);
 				font-weight: 800;
-				font-size: 2.3rem;
-				margin: 20px 0 0 5%;
+				font-size: 2.1rem;
+				margin: 20px auto 0 auto;
 				text-align: center;
 				width: 90%;
 			}
 
+
+			h2 span{
+				margin-top: 15px;
+				display: block;
+				font-size: 4.5rem;
+				color: yellow;
+			}
+
+			h2 em{
+				font-size: 1.8rem;
+				display: block;
+				font-style: normal;
+			}
+
+
+
 			h2.second{
+				width: 100%;
+				border-radius: 0;
 				font-size: 1.7rem;
 				font-weight: 400;
 				margin-top: 20px;
-				color: rgb(0, 120, 30);
+				color: white;
 			}
 
 
 			.fund_button_wrapper{
-				background-color: white;
 				padding: 10px 0 20px 0;
 				width: 90%;
 				margin-left: 5%;
@@ -173,13 +204,46 @@
 
 
 
-			button{
-				margin: 50px 0 0 15%;
+			.copy_button{
+				padding: 15px 0;
+				background-color: white;
+				margin: 50px auto 0 auto;
 				width: 70%;
 				display: block;
-				font-size: 1.3rem;
+				font-size: 1.4rem;
 				display: block;
-				border-radius: 6px;
+				border-radius: 10px;
+			}
+
+			.copy_button a {
+				text-align: center;
+				color: darkgreen;
+				display: block;
+			}
+
+			.copy_button {
+				color: gray;
+				animation-name: enlarge;
+				animation-duration: 500ms;
+				animation-timing-function: linear;
+				animation-iteration-count: infinite;
+				animation-direction: alternate;
+				text-align: center;
+			}
+
+
+
+			@keyframes enlarge{
+				0%{	
+					transform: scale(1.0, 1.0);
+				}
+
+				
+
+				100%{
+					transform: scale(1.1, 1.1);
+					font-size: 1.6rem;
+				}
 			}
 
 
@@ -204,11 +268,12 @@
 
 			.link{
 				width: 90%;
+				font-size: 1.4rem;
 				border-radius: 10px;
 				word-wrap: break-word;
 				margin: 10px 0 0 5%;
 				padding: 10px;
-				color: rgb(50, 50, 50);
+				color: white;
 				border: 1px solid rgb(0, 200, 0);
 				box-sizing: border-box;
 			}
@@ -267,11 +332,11 @@
 		<article>
 
 			<section class="data_section">
-				<p class="first_p">Full Name:</p> <p class="second_p"><%=data.fullName%></p>
-				<p class="first_p">Phone Number:</p> <p class="second_p"><%=data.email%></p>
-				<p class="first_p">Wallet Balance:</p> <p class="second_p">₦<%=data.wallet%></p>
-				<p class="first_p">Referral Reward:</p> <p class="second_p">₦<%=data.reward%></p>
-				<p class="first_p">People Registered:</p> <p class="second_p"><%=data.reward / 350%></p>
+				<i class="fas fa-user-alt"></i> <p class="first_p">Full Name:</p> <p class="second_p"><%=data.fullName%></p>
+				<i class="fas fa-phone-alt"></i> <p class="first_p">Phone Number:</p> <p class="second_p"><%=data.email%></p>
+				<i class="fas fa-wallet"></i> <p class="first_p">Wallet Balance:</p> <p class="second_p">₦<%=data.wallet%></p>
+				<i class="fas fa-hand-holding-usd"></i> <p class="first_p">Referral Reward:</p> <p class="second_p">₦<%=data.reward%></p>
+				<i class="fas fa-users"></i> <p class="first_p">People Registered:</p> <p class="second_p"><%=data.reward / 350%></p>
 			</section>
 
 
@@ -282,20 +347,20 @@
 
 			<section class="referral_section" id="referral_section">
 
-				<h2>Earn ₦350 for Each Referral</h2>
+				<h2>Refer & Earn <span>₦350</span><em> For each referral</em></h2>
 
 				<form class="link_form">
 
-					<button class="copy_button"><a style="display: block; color: white" href="https://api.whatsapp.com/send?text=Take a look at this amazing website. They sell data at the cheapest price and they give 11GB welcome bonus to all new users......                       
+					<div class="copy_button"><a href="https://api.whatsapp.com/send?text=Take a look at this amazing website. They sell data at the cheapest price and they give 11GB welcome bonus to all new users......                       
 
 					*Click the link to register for free* 
 
-					 https://meggadata2-infodoleef.b4a.run/home/<%=data._id%>" data-action="share/whatsapp/share">Share on WhatsApp</a> </button>
+					 https://meggadata2-infodoleef.b4a.run/home/<%=data._id%>" data-action="share/whatsapp/share">Share on WhatsApp</a> </div>
 				</form>
 
 				<p class="or">Or</p>
 
-				<h2 class="second">Copy Your Link </h2>
+				<h2 class="second">Copy Your Link Below</h2>
 				<p class="link">https://meggadata2-infodoleef.b4a.run/home/<%=data._id%> </p>
 				
 			</section>
