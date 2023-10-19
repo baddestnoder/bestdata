@@ -6,13 +6,58 @@
 	<link rel="icon" href="/site_icon.jpg">
 	<link rel="stylesheet" type="text/css" href="/css/purchase.css">
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
 
 	<style type="text/css">
 
 		body{
-			background-color: rgb(230, 230, 240);
+			background-color: white;
 		}
+
+
+
+		.loader_wrapper{
+			margin-top: 20px;
+			font-size: 5rem;
+		}
+
+
+		.loader_wrapper .fas{
+			color: gray;
+			font-size: 7rem;
+			animation-name: color_change;
+			animation-duration: 4000ms;
+			animation-timing-function: linear;
+			animation-iteration-count: infinite;
+			text-align: center;
+		}
+
+
+
+				@keyframes color_change{
+
+					0%{	
+						transform: rotate(0deg);
+						color: gray;
+					}
+
+					25%{
+						transform: rotate(360deg);
+						color: gray;
+					}
+
+					100%{
+						color: blue;
+					}
+
+
+				}
+
+
+
+
 
 
 		.wallet_wrapper{
@@ -28,8 +73,7 @@
 
 		article{
 			border-radius: 15px;
-			width: 90%;
-			margin: 30px 0 0 5%;
+			width: 100%;
 			background-color: white;
 			padding: 20px;
 			box-sizing: border-box;
@@ -38,20 +82,33 @@
 
 
 		h1{
-			text-align: left;
-			padding: 0;
-			margin: 0;
+			text-align: center;
+			padding: 2px;
+			box-sizing: border-box;
+			margin-top: 10px;
 			border: 0;
 			width: 100%;
-			color: rgb(70, 70, 70);
-			font-size: 3rem;
+			color: black;
+			font-size: 1.7rem;
 		}
 
 		p{
+			text-align: center;
 			margin-top: 10px;
-			color: rgb(50, 50, 50);
+			color: rgb(80, 80, 80);
 			line-height: 1.5;
 			font-size: 1.4rem;
+		}
+
+
+
+		.data_section_wrapper{
+			background-color: rgb(230, 230, 230);
+			padding: 10px 0;
+			border-radius: 11px;
+			width: 90%;
+			margin: auto;
+
 		}
 
 
@@ -62,10 +119,8 @@
 			display: grid;
 			grid-template-columns: 1fr 1.3fr;
 			line-height: 1.4;
-			background-color: white;
-			width: 90%;
-			margin-left: 5%;
-			padding: 20px;
+			margin-left: 10px;
+			padding: 10px;
 			border-radius: 15px;
 			box-sizing: border-box;
 			
@@ -73,7 +128,7 @@
 
 		.data_section > p{
 			font-size: 1.2rem;
-			padding: 20px 5px;
+			padding: 10px 0;
 			color: black;
 			border-bottom: 1px solid rgb(200, 200, 200);
 		}
@@ -81,15 +136,14 @@
 
 
 		p.first_p{
-			color: rgb(80, 80, 80);
+			color: black;
 			font-weight: 600;
-			padding-left: 20px;
 		}
 
 
 		p.second_p{
-			text-align: right;
-			padding-right: 20px;
+			margin-left: 30px;
+			text-align: left;
 		}
 
 
@@ -106,50 +160,69 @@
 
 
 
-<body data-number="<%=contactInfo.number%>">
+<body data-number="<%=contactInfo.number%>" data-amount="<%=data.wallet%>">
 	<div class="body_overlay"></div>
 
-
-	<section class="wallet_wrapper">
-		<h2>Wallet Balance: ₦<%=data.wallet%></h2>
-		<h2>Referral Reward: ₦<%=data.reward%></h2>
-	</section>
-
+	<div style="text-align: center; color: red;" class="loader_wrapper">
+		<i class="fas fa-recycle"></i>
+	</div>
 
 	<article>
-		<h1>Bank Transfer</h1>
-		<p>You can fund your wallet by simply transferring your preferred amount to the account below. It will be credited to your wallet within 2 minutes... <br><br> Please <a href="/chatting">Click Here </a> to contact our customer service if the fund is not credited after 2 minutes.</p>
+		<h1>We are waiting for your payment</h1>
+		<p>Please do not refresh this page until you have completed the transaction...</p>
 	</article>
 
 
-	<section class="data_section">
-		<p class="first_p">Account Name:</p> <p class="second_p"><%=contactInfo.accountName%></p>
-		<p class="first_p">Account Number:</p> <p class="second_p"><%=contactInfo.bank%></p>
-	</section>
+	<div class="data_section_wrapper">
+		<h1>Transfer to the following account</h1>
 
-	<br><br>
+		<section class="data_section">
+			<p class="first_p">Account Name:</p> <p class="second_p"><%=contactInfo.accountName%></p>
+			<p class="first_p">Account Number:</p> <p class="second_p"><%=contactInfo.bank%></p>
+		</section>
+	</div>
+
+	<br>
+
+	<p>Your transaction will automatically reflect here within 4 minutes, please <a href="/chatting">Click Here </a> to contact our customer service if the fund is not credited after 4 minutes.</p>
+
+	
 
 
 	<script type="text/javascript">
 
+
+
+
+		const loader_wrapper = document.querySelector(".loader_wrapper");
+
 		const whatsappNumber = document.querySelector(".whatsapp_number");
 		const body = document.querySelector("body");
 
-		let d = new Date;
-		let hour = d.getHours();
+
+		let pastAmount = document.querySelector("body").dataset.amount;
 
 
+		setInterval( async()=>{
 
+			try{
+				const result = await fetch("/getCurrentAmount", {
+				method: "GET"
+				});
 
-		hour = parseInt(hour);
+				const res = await result.json();
 
-		if(hour%2 == 0){
-			whatsappNumber.innerHTML = "body.dataset.number";
-		}else{
-			whatsappNumber.innerHTML = "body.dataset.number";
-		}
+				if(res.currentAmount > pastAmount){
+					pastAmount = res.currentAmount;
+					alert("We have received your payment, please wait.");
+					window.location.href = "/purchase";
+				}
+			}catch(error){
+				console.log(error)
+			}
 
-		
+			
+		}, 20000);
 		
  
 
