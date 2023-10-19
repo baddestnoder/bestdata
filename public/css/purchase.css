@@ -308,7 +308,7 @@
 				div.bundle_wrapper {
 					margin-top: 25px;
 					box-sizing: border-box;
-					background-color: rgb(230, 230, 230);
+					background-color: rgb(240, 240, 240);
 					padding: 20px 2.5%;
 					display: grid;
 					grid-template-columns: 1fr 1fr 1fr;
@@ -324,6 +324,7 @@
 
 
 				div.bundle_wrapper > div{
+					border: 1px solid red;
 					color: black;
 					font-size: 1rem;
 					padding: 0 0 10px 0;
@@ -332,10 +333,15 @@
 					border-radius: 15px;
 				}
 
+				div.bundle_wrapper > div+div{
+					border: 1px solid green;
+				}
+
 
 
 				div.bundle_wrapper .no_bonus{
-					background-color: rgb(45, 30, 70);
+					color: white;
+					background-color: rgb(130, 0, 0);
 				}
 
 
@@ -343,12 +349,11 @@
 			
 				
 				.bundle_wrapper em{
-					font-size: 1rem;
+					font-size: 1.2rem;
 					text-align: center;
 					border-radius: 15px 15px 0 0;
-					background-color: rgb(240, 70, 70);
-					
-					padding: 4px 6px;
+					background-color: rgb(0, 70, 0);
+					padding: 8px 6px;
 					margin-bottom: 20px;
 					display: block;
 					margin-left: auto;
