@@ -169,7 +169,8 @@
 
 
 
-<body data-number="<%=contactInfo.number%>" data-amount="<%=data.wallet%>">
+
+<body data-email="<%=data.email%>" data-flink="<%=contactInfo.fLink%>" data-slink="<%=contactInfo.sLink%>" data-amount="<%=data.wallet%>">
 	<div class="body_overlay"></div>
 
 	<div style="text-align: center; color: red;" class="loader_wrapper">
@@ -193,7 +194,7 @@
 
 	<br>
 
-	<p class="instruction"><b>Your transaction will automatically reflect here within 4 minutes, please <a href="/chatting" style="color:red">Click Here </a> to contact our customer service if the fund is not credited after 4 minutes.</b></p>
+	<p class="instruction">Your transaction will automatically reflect here within 4 minutes, please <a class="whatsappLink" style="color: red;" href="">Click Here </a> to contact our customer service if the fund is not credited after 4 minutes.</p>
 
 	
 
@@ -207,13 +208,28 @@
 
 		const whatsappNumber = document.querySelector(".whatsapp_number");
 		const body = document.querySelector("body");
+		const whatsappLink = document.querySelector(".whatsappLink");
 
 
 		let pastAmount = document.querySelector("body").dataset.amount;
 
 
-		setInterval( async()=>{
+		let date = new Date();
 
+		function evenNumberOfSecond(second){
+			if(second % 2 === 0){
+				whatsappLink.href = body.dataset.flink;
+			}else{
+				whatsappLink.href = body.dataset.slink;
+			}
+		}
+
+		evenNumberOfSecond(date.getSeconds());
+
+
+
+
+		setInterval( async()=>{
 			try{
 				const result = await fetch("/getCurrentAmount", {
 				method: "GET"
@@ -230,8 +246,32 @@
 				console.log(error)
 			}
 
-			
 		}, 20000);
+
+
+
+
+
+
+
+		const queue = async()=>{
+
+			try{
+				const result = await fetch("/bank_queue", {
+					body: JSON.stringify({email: body.dataset.email}),
+					Header: {"Content-Type": "application/json"},
+					method: "POST"
+				});
+
+				const res = await result.json();
+				console.log(res);
+			}catch(error){
+				console.log(error);
+			}
+		}
+
+
+		queue()
 		
  
 
