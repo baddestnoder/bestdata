@@ -8,7 +8,7 @@ const router = express.Router();
 
 
 
-router.get("/contact_info", async(req, res)=>{
+router.get("/contact__", async(req, res)=>{
 
 	try{
 
@@ -28,7 +28,6 @@ router.get("/contact_info", async(req, res)=>{
 
 
 router.post("/contact_info", async(req, res)=>{
-
 	try{
 		await new ContactDB(req.body).save();
 		res.json({okay: "okay"})
