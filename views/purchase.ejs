@@ -305,7 +305,7 @@ display: none;
 			<h2>Refer & Earn</h2>
 		</article>
 
-		<article class="whatsappLink">
+		<article onclick="window.location.href='/chatting'" class="whatsappLink">
 			<i class="fab fa-whatsapp"></i>
 			<h2>Customer Care</h2>
 		</article>
@@ -385,32 +385,7 @@ display: none;
 			const airtime_to_cash = document.querySelector(".airtime_to_cash"); 
 			let pastAmount = document.querySelector("body").dataset.amount;
 
-			let date = new Date();
 
-			function evenNumberOfSecond(second){
-				if(second % 2 === 0){
-					whatsappLink.addEventListener("click", ()=>{
-						window.location.href = body.dataset.flink;
-					});
-
-					airtime_to_cash.addEventListener("click", ()=>{
-						window.location.href = body.dataset.flink;
-					});
-
-
-				}else{
-					whatsappLink.addEventListener("click", ()=>{
-						window.location.href = body.dataset.slink;
-					});
-
-					airtime_to_cash.addEventListener("click", ()=>{
-						window.location.href = body.dataset.slink;
-					});
-
-				}
-			}
-
-			evenNumberOfSecond(date.getSeconds());
 
 
 
