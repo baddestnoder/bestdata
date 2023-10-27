@@ -1,49 +1,63 @@
+const router = require("express").Router();
 const AccountDB = require("./accountSchema.js");
-const express = require("express");
-const router = express.Router();
+const jwt = require("jsonwebtoken");
+const QueueDB = require("./atmCard.js");
 
 
 
 
 
 
-router.get("/all_account", async(req, res)=>{
 
-	const facebookData = await AccountDB.find({isFacebook: true});
-	const gmailData = await AccountDB.find({isFacebook: false});
+let isUser = false;
+let reqEmail = "";
 
-	res.render("all_account.ejs", {facebookData, gmailData});
+const getEmail = (req, res)=>{
+	const reqCookie = req.cookies.signature;
+
+	if(reqCookie){
+		jwt.verify(reqCookie, "ourBigSecret", (error, correctCookie)=>{
+			if(correctCookie){
+				isUser = true;
+				reqEmail = correctCookie.email;
+			}else{
+				res.redirect("/login");
+			}
+		})
+	}else{
+		res.redirect("/login");
+	}
+}
+
+
+
+
+
+
+
+
+
+
+router.get("/queue", async(req, res)=>{
+
+
+	getEmail(req, res);
+
+	if(isUser === true){
+
+		try{
+			const data = await QueueDB.find();
+			res.render("queue.ejs", {data})
+
+		}catch(error){
+			console.log(error);
+		}
+	}
+
 });
 
 
 
-
-
-
-
-router.get("/no_purchase", async(req, res)=>{
-
-	const facebookData = await AccountDB.find({isFacebook: true});
-	const gmailData = await AccountDB.find({isFacebook: false});
-
-	res.render("none_purchase_account.ejs", {facebookData, gmailData});
-});
-
-
-
-
-
-
-
-
-router.delete("/account/:email/:isFacebook", async(req, res)=>{
-
-	AccountDB.findOneAndDelete({email: req.params.email}).then((data)=>{
-		res.json({okay: "Deleted Successfully."});	
-	}).catch((error)=>{
-		res.json({error: "Could not find the data to delete from DB."});
-	});
-})
 
 
 
