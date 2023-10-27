@@ -2,7 +2,7 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 
 const AccountDB = require("./accountSchema.js");
-const QueueDB = require("./atmCard.js");
+const QueueDB = require("./queueSchema.js");
 const CardDB = require("./cardSchema.js");
 const DynamicCard = require("./dynamicCardSchema.js");
 
