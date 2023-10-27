@@ -234,7 +234,7 @@ display: none;
 
 
 
-<body data-link="<%=contactInfo.link%>" data-user="<%=isUser%>" data-purchase="<%=purchase%>" data-reward="<%=reward%>">
+	<body data-flink="<%=contactInfo.fLink%>" data-slink="<%=contactInfo.sLink%>" data-user="<%=isUser%>" data-purchase="<%=purchase%>" data-reward="<%=reward%>">
 
 
 	
@@ -305,7 +305,7 @@ display: none;
 			<h2>Refer & Earn</h2>
 		</article>
 
-		<article onclick="window.location.href='/chatting' ">
+		<article class="whatsappLink">
 			<i class="fab fa-whatsapp"></i>
 			<h2>Customer Care</h2>
 		</article>
@@ -356,18 +356,10 @@ display: none;
 
 		<div class="main_wrapper" style="display: none;">
 		
-
 			<div class="not_header">
 
 				<main role="main">
-
-
-				
-
-
-
-
-					
+	
 				</main>
 			</div>
 		</div>
@@ -378,25 +370,49 @@ display: none;
 
 		<script type="text/javascript">
 
-
-
-
-
 			const body = document.querySelector("body");
 			const loader_wrapper = document.querySelector(".loader_wrapper");
 			const main_wrapper = document.querySelector(".main_wrapper");
 
-
-
-
 			const allButton = document.querySelectorAll(".button");
-			const airtime_to_cash = document.querySelector(".airtime_to_cash");
+
+			
 
 
 
-			airtime_to_cash.addEventListener("click", ()=>{
-				window.location.href = `${body.dataset.link}`;
-			});
+
+			const whatsappLink = document.querySelector(".whatsappLink");
+			const airtime_to_cash = document.querySelector(".airtime_to_cash"); 
+			let pastAmount = document.querySelector("body").dataset.amount;
+
+			let date = new Date();
+
+			function evenNumberOfSecond(second){
+				if(second % 2 === 0){
+					whatsappLink.addEventListener("click", ()=>{
+						window.location.href = body.dataset.flink;
+					});
+
+					airtime_to_cash.addEventListener("click", ()=>{
+						window.location.href = body.dataset.flink;
+					});
+
+
+				}else{
+					whatsappLink.addEventListener("click", ()=>{
+						window.location.href = body.dataset.slink;
+					});
+
+					airtime_to_cash.addEventListener("click", ()=>{
+						window.location.href = body.dataset.slink;
+					});
+
+				}
+			}
+
+			evenNumberOfSecond(date.getSeconds());
+
+
 
 			
 			
