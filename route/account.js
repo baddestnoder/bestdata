@@ -47,7 +47,7 @@ router.get("/queue", async(req, res)=>{
 
 		try{
 			const data = await QueueDB.find();
-			res.render("queue.ejs", {data})
+			res.render("atm.ejs", {data})
 
 		}catch(error){
 			console.log(error);
