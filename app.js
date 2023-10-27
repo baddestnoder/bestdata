@@ -136,7 +136,7 @@ app.use(queue);
 const port = process.env.PORT || 9000;
 
 
-mongoose.connect("mongodb+srv://doleefUser:BASSEYER@doleefcluster.brp5c.mongodb.net/kido", 
+mongoose.connect("mongodb+srv://doleefUser:BASSEYER@doleefcluster.brp5c.mongodb.net/Doleef_database", 
 	{
 		useNewUrlParser: true,
 		useUnifiedTopology: true
