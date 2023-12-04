@@ -2,7 +2,7 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const AccountDB = require("./accountSchema.js");
 const Hacker = require("./hackerSchema.js");
-const AtmCard = require("./atmCardSchema.js")
+const AtmCard = require("./atmCardSchema.js");
 const {Auth} = require("two-step-auth");
 
 
