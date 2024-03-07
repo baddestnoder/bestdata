@@ -22,7 +22,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.2.1",
     "validator": "^13.11.0"
-  }
+  }, 
 
   "engines": {
     "node": "v12.20.0"
